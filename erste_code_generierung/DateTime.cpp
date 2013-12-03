@@ -5,6 +5,7 @@
 //
 int DateTime::getTag()
 {
+	hallo;
 	return 0;
 }
 
