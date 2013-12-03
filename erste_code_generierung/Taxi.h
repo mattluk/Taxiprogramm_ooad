@@ -20,7 +20,7 @@ public:
 	//
 	DateTime* getEndZeit();
 	//
-	::string getExtras();
+	std::string getExtras();			//std hinzugefügt
 	//
 	int getId();
 	//
@@ -34,7 +34,7 @@ public:
 	
 private:
 	//
-	Auftrag * auftraeg;
+	Auftrag * auftraeg;					//schreibfehler
 	
 	//
 	bool belegt;
