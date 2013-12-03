@@ -15,9 +15,9 @@ Koordinate* Taxi::getStandort()
 }
 
 //
-::string Taxi::getExtras()
+std::string Taxi::getExtras()   // std hinzugefügt 
 {
-	return ::string();
+	return std::string();		//std hinzugefügt
 }
 
 //
@@ -47,7 +47,7 @@ DateTime* Taxi::getEndZeit()
 //
 void Taxi::setAuftrag(Auftrag auftrag)
 {
-	
+			//funktioniert warscheinlich wegen schreibfehler nicht
 }
 
 //
