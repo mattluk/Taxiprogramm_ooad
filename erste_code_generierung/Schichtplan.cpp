@@ -11,6 +11,6 @@ std::vector<Taxi*> Schichtplan::gibFreieTaxis(DateTime* startZeit, DateTime* end
 //
 void Schichtplan::setKundendatenbank(Kundendatenbank* kundendatenbank)
 {
-	
+	this->kundendatenbank=kundendatenbank;
 }
 

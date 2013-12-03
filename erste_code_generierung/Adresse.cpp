@@ -35,30 +35,30 @@ std::string Adresse::getHausnummer()
 //
 void Adresse::setStadt(std::string stadt)
 {
-	
+	this->stadt=stadt;
 }
 
 //
 void Adresse::setPlz(int plz)
 {
-	
+	this->plz=plz;
 }
 
 //
 void Adresse::setStrasse(std::string strasse)
 {
-	
+	this->strasse=strasse;
 }
 
 //
 void Adresse::setHausnummer(std::string hausnummer)
 {
-	
+	this->hausnummer=hausnummer;
 }
 
 //
 void Adresse::setKoordinate(Koordinate koordinate)
 {
-	
+	this->koordinate=koordinate;
 }
 

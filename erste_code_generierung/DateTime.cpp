@@ -41,43 +41,44 @@ int DateTime::getSekunden()
 //
 void DateTime::setTag(int tag)
 {
-	
+	this->tag=tag;
 }
 
 //
 void DateTime::setMonat(int monat)
 {
-	
+	this->monat=monat;
 }
 
 //
 void DateTime::setJahr(int jahr)
 {
-	
+	this->jahr=jahr;
 }
 
 //
 void DateTime::setStunde(int stunde)
 {
-	
+	this->stunde=stunde;
 }
 
 //
 void DateTime::setMinuten(int minuten)
 {
-	
+	this->minuten=minuten;
 }
 
 //
 void DateTime::setSekunden(int sekunden)
 {
-	
+	this->sekunden=sekunden;
 }
 
 //
 void DateTime::setDate(std::string date)
 {
-	
+	//this->setDate=date;  so funktioniert es!
+	//this->date=date;	   so nicht!
 }
 
 //

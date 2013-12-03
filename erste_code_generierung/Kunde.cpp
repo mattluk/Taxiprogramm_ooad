@@ -45,38 +45,38 @@ Adresse Kunde::getAdresse()
 }
 
 //
-void Kunde::setVorname(::string vorname)
+void Kunde::setVorname(std::string vorname)			//std hat gefehlt
 {
-	
+	this->vorname=vorname;
 }
 
 //
 void Kunde::setNachname(std::string nachname)
 {
-	
+	this->nachname=nachname;
 }
 
 //
 void Kunde::setTelefonnummer(int telefonnummer)
 {
-	
+	this->telefonnummer=telefonnummer;
 }
 
 //
 void Kunde::setHandy(int handy)
 {
-	
+	this->handy=handy;
 }
 
 //
 void Kunde::setEmail(std::string email)
 {
-	
+	this->email=email;
 }
 
 //
 void Kunde::setAdresse(Adresse adresse)
 {
-	
+	this->adresse=adresse;
 }
 

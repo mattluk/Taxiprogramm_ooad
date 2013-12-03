@@ -35,7 +35,7 @@ public:
 	//
 	void setTelefonnummer(int telefonnummer);
 	//
-	void setVorname(::string vorname);
+	void setVorname(std::string vorname);             //std hat gefehlt
 	
 private:
 	//
