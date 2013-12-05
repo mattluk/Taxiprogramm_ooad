@@ -11,6 +11,6 @@ std::string TaxiKomSys::getStandort()
 //
 void TaxiKomSys::auftragSetzen(std::string daten)
 {
-	
+    string tmpDaten = daten;
 }
 

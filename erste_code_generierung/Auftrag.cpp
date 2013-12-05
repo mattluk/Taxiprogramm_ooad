@@ -17,31 +17,31 @@ std::string Auftrag::getAnforderungen()
 //
 Adresse* Auftrag::getFahrziel()
 {
-	return Adresse();
+    //return Adresse();
 }
 
 //
 Adresse* Auftrag::getAbholpunkt()
 {
-	return Adresse();
+    //return Adresse();
 }
 
 //
 DateTime* Auftrag::getAbholzeit()
 {
-	return DateTime();
+    //return DateTime();
 }
 
 //
 Kunde* Auftrag::getKunde()
 {
-	return Kunde();
+    //return Kunde();
 }
 
 //
 Taxi* Auftrag::getTaxi()
 {
-	return Taxi();
+    //return Taxi();
 }
 
 //
@@ -53,19 +53,19 @@ double Auftrag::getBerechneterFahrpreis()
 //
 DateTime* Auftrag::getBerechneteFahrzeit()
 {
-	return DateTime();
+    //return DateTime();
 }
 
 //
 double Auftrag::getFahrpreis()
 {
-	return 0;
+    //return 0;
 }
 
 //
 DateTime* Auftrag::getFahrzeit()
 {
-	return DateTime();
+    //return DateTime();
 }
 
 //

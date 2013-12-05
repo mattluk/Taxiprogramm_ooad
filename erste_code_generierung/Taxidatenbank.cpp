@@ -5,7 +5,7 @@
 //
 std::vector<Taxi*> Taxidatenbank::getTaxis()
 {
-	return 0;
+    //return 0;
 }
 
 //

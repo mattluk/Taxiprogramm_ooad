@@ -17,6 +17,6 @@ int Kundendatenbank::neuerKunde(Adresse* adresse, std::string vorname, std::stri
 //
 Kunde* Kundendatenbank::getKunde(int kundenId)
 {
-	return Kunde();
+    //return Kunde();
 }
 

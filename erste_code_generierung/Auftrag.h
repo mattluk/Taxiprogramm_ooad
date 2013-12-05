@@ -9,6 +9,9 @@
 #include "Kunde.h"
 #include "Taxi.h"
 //
+class Taxi;
+class DateTime;
+
 class Auftrag
 {
 	

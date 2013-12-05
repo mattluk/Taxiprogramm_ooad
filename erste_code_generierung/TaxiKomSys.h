@@ -6,6 +6,8 @@
 #include "I_KomSys.h"
 #include "string"
 #include "ePayment.h"
+
+using namespace std;
 //
 class TaxiKomSys: I_KomSys
 {

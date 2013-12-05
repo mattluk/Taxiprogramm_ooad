@@ -9,6 +9,9 @@
 #include "Auftrag.h"
 #include "string"
 //
+class DateTime;
+class Auftrag;
+
 class Taxi
 {
 	
@@ -20,7 +23,7 @@ public:
 	//
 	DateTime* getEndZeit();
 	//
-	std::string getExtras();			//std hinzugefügt
+	std::string getExtras();			//std hinzugefuegt
 	//
 	int getId();
 	//

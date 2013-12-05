@@ -5,6 +5,8 @@
 
 #include "vector"
 #include "Taxi.h"
+
+using namespace std;
 //
 class Taxidatenbank
 {

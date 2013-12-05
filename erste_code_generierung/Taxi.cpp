@@ -11,13 +11,13 @@ int Taxi::getSitze()
 //
 Koordinate* Taxi::getStandort()
 {
-	return Koordinate();
+    //return Koordinate();
 }
 
 //
-std::string Taxi::getExtras()   // std hinzugefügt 
+std::string Taxi::getExtras()   // std hinzugefuegt 
 {
-	return std::string();		//std hinzugefügt
+	return std::string();		//std hinzugefuegt
 }
 
 //
@@ -35,13 +35,13 @@ bool Taxi::getBelegt()
 //
 DateTime* Taxi::getStartZeit()
 {
-	return DateTime();
+    //return DateTime();
 }
 
 //
 DateTime* Taxi::getEndZeit()
 {
-	return DateTime();
+    //return DateTime();
 }
 
 //
