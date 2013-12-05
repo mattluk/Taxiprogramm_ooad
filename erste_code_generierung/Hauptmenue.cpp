@@ -10,7 +10,7 @@ int Hauptmenue::starten()
 	do
 	{
 		//Menue anzeigen
-        cout << "Willkommen beim Taxiunternehmen, bitte geben Sie die fuer Sie gewuenschte Zahl ein"<<endl;
+        cout << "Willkommen beim Taxiunternehmen, bitte geben Sie die fuer Sie gewuenschte Zahl ein" << endl;
 
         cout << "Menue" <<endl<<endl;
         cout << "1. Liste der Taxiauftraege anzeigen"<<endl;
@@ -19,13 +19,13 @@ int Hauptmenue::starten()
         cout << "9. Ende"<<endl;
 
 		//Auswahl einlesen
-		cout<<"Bitte geben Sie eine Zahl ein";
-        cin >> eingabe;
+        cout << "Bitte geben Sie eine Zahl ein";
+        cout << "> ";
 		cin.sync();
-		cin>>eingabe;
+        cin >> eingabe;
 		cin.clear();
 
-		cout<<endl;
+        cout << endl;
 		//Auswahl ausfuehren
 		switch(eingabe)
 		{
@@ -34,10 +34,10 @@ int Hauptmenue::starten()
             case 3: ;break;
 			case 9: break;
 
-			default: cout<<"Das war eine falsche Eingabe versuchen Sie es bitte erneut"<<endl;
+            default: cout << "Das war eine falsche Eingabe versuchen Sie es bitte erneut" << endl;
 		}
-	}
-	while (eingabe!=9);
+    } while (eingabe!=9);
+
 	return 0;
 }
 
