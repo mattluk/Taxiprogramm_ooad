@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="90">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>../include/Adresse.h</itemPath>
+      <itemPath>../include/Auftrag.h</itemPath>
+      <itemPath>../include/Auftragssystem.h</itemPath>
+      <itemPath>../include/DateTime.h</itemPath>
+      <itemPath>../include/I_KomSys.h</itemPath>
+      <itemPath>../include/Koordinate.h</itemPath>
+      <itemPath>../include/Kunde.h</itemPath>
+      <itemPath>../include/Kundendatenbank.h</itemPath>
+      <itemPath>../include/Menue.h</itemPath>
+      <itemPath>../include/Schichtplan.h</itemPath>
+      <itemPath>../include/Status.h</itemPath>
+      <itemPath>../include/Taxi.h</itemPath>
+      <itemPath>../include/TaxiKomSys.h</itemPath>
+      <itemPath>../include/Taxidatenbank.h</itemPath>
+      <itemPath>../include/ePayment.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>../src/Adresse.cpp</itemPath>
+      <itemPath>../src/Auftrag.cpp</itemPath>
+      <itemPath>../src/Auftragssystem.cpp</itemPath>
+      <itemPath>../src/DateTime.cpp</itemPath>
+      <itemPath>../src/Hauptmenue.cpp</itemPath>
+      <itemPath>../src/I_KomSys.cpp</itemPath>
+      <itemPath>../src/Koordinate.cpp</itemPath>
+      <itemPath>../src/Kunde.cpp</itemPath>
+      <itemPath>../src/Kundendatenbank.cpp</itemPath>
+      <itemPath>../src/Schichtplan.cpp</itemPath>
+      <itemPath>../src/Status.cpp</itemPath>
+      <itemPath>../src/Taxi.cpp</itemPath>
+      <itemPath>../src/TaxiKomSys.cpp</itemPath>
+      <itemPath>../src/Taxidatenbank.cpp</itemPath>
+      <itemPath>../src/ePayment.cpp</itemPath>
+      <itemPath>../src/main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>../src</Elem>
+    <Elem>../include</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>../include</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>../include</pElem>
+          </linkerAddLib>
+        </linkerTool>
+      </compileType>
+      <item path="../include/Adresse.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Auftrag.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Auftragssystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/DateTime.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/I_KomSys.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Koordinate.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Kunde.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Kundendatenbank.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Menue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Schichtplan.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Status.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Taxi.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/TaxiKomSys.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Taxidatenbank.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/ePayment.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../src/Adresse.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Auftrag.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Auftragssystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/DateTime.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Hauptmenue.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/I_KomSys.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Koordinate.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Kunde.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Kundendatenbank.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Schichtplan.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Status.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Taxi.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/TaxiKomSys.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Taxidatenbank.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/ePayment.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="../include/Adresse.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Auftrag.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Auftragssystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/DateTime.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/I_KomSys.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Koordinate.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Kunde.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Kundendatenbank.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Menue.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Schichtplan.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Status.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Taxi.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/TaxiKomSys.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/Taxidatenbank.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../include/ePayment.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../src/Adresse.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Auftrag.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Auftragssystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/DateTime.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Hauptmenue.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/I_KomSys.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Koordinate.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Kunde.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Kundendatenbank.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Schichtplan.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Status.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Taxi.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/TaxiKomSys.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/Taxidatenbank.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/ePayment.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
