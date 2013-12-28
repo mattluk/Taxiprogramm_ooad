@@ -5,7 +5,7 @@
 //
 int Hauptmenue::starten()
 {
-	int eingabe=-1;
+    int eingabe=-1;
 
 	do
 	{
@@ -18,14 +18,14 @@ int Hauptmenue::starten()
         cout << "3. Taxiauftrag erstellen"<<endl;
         cout << "9. Ende"<<endl;
 
-		//Auswahl einlesen
+        //Auswahl einlesen
         cout << "Bitte geben Sie eine Zahl ein";
         cout << "> ";
-		cin.sync();
+        cin.ignore(1,' ');
         cin >> eingabe;
-		cin.clear();
-
+        cin.clear();
         cout << endl;
+
 		//Auswahl ausfuehren
 		switch(eingabe)
 		{
@@ -35,7 +35,7 @@ int Hauptmenue::starten()
 			case 9: break;
 
             default: cout << "Das war eine falsche Eingabe versuchen Sie es bitte erneut" << endl;
-		}
+        }
     } while (eingabe!=9);
 
 	return 0;
