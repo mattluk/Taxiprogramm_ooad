@@ -3,8 +3,8 @@
 #ifndef TAXIDATENBANK_H_H
 #define TAXIDATENBANK_H_H
 
-#include "vector"
 #include "Taxi.h"
+#include <vector>
 
 using namespace std;
 //
@@ -12,18 +12,21 @@ class Taxidatenbank
 {
 	
 public:
+    //
+    Taxidatenbank();
 	//
 	Taxi getTaxi(int taxiId);
 	//
-	std::vector<Taxi*> getTaxis();
+    vector<Taxi*> getTaxis();
+    //
+    void initTaxis();
 	
 private:
 	//
 	static int idIndex;
 	
 	//
-	std::vector<Taxi*> taxis;
-	
+    vector<Taxi*> taxis;
 	
 };
 

@@ -4,12 +4,17 @@
 #define DATETIME_H_H
 
 #include "Taxi.h"
-#include "string"
+#include <string>
+
+using namespace std;
+
 //
 class DateTime
 {
 	
 public:
+    //
+    DateTime(int jahr, int monat, int tag, int stunde, int minuten, int sekunden);
 	//
 	int getJahr();
 	//
@@ -23,7 +28,7 @@ public:
 	//
 	int getTag();
 	//
-	void setDate(std::string date);
+    void setDate(string date);
 	//
 	void setJahr(int jahr);
 	//
@@ -37,7 +42,7 @@ public:
 	//
 	void setTag(int tag);
 	//
-	std::string toString();
+    string toString();
 	
 private:
 	//

@@ -3,37 +3,47 @@
 
 #include "Adresse.h"
 //
-Koordinate Adresse::getKoordinate()
+Adresse::Adresse(string strasse, string hausnummer, int plz, string stadt, Koordinate* koordinate)
 {
-	return Koordinate();
+    this->strasse = strasse;
+    this->hausnummer = hausnummer;
+    this->plz = plz;
+    this->stadt = stadt;
+    this->koordinate = koordinate;
 }
 
 //
-std::string Adresse::getStadt()
+Koordinate* Adresse::getKoordinate()
 {
-	return std::string();
+    return this->koordinate;
+}
+
+//
+string Adresse::getStadt()
+{
+    return this->stadt;
 }
 
 //
 int Adresse::getPlz()
 {
-	return 0;
+    return this->plz;
 }
 
 //
-std::string Adresse::getStrasse()
+string Adresse::getStrasse()
 {
-	return std::string();
+    return this->strasse;
 }
 
 //
-std::string Adresse::getHausnummer()
+string Adresse::getHausnummer()
 {
-	return std::string();
+    return this->hausnummer;
 }
 
 //
-void Adresse::setStadt(std::string stadt)
+void Adresse::setStadt(string stadt)
 {
 	this->stadt=stadt;
 }
@@ -45,19 +55,19 @@ void Adresse::setPlz(int plz)
 }
 
 //
-void Adresse::setStrasse(std::string strasse)
+void Adresse::setStrasse(string strasse)
 {
 	this->strasse=strasse;
 }
 
 //
-void Adresse::setHausnummer(std::string hausnummer)
+void Adresse::setHausnummer(string hausnummer)
 {
 	this->hausnummer=hausnummer;
 }
 
 //
-void Adresse::setKoordinate(Koordinate koordinate)
+void Adresse::setKoordinate(Koordinate* koordinate)
 {
 	this->koordinate=koordinate;
 }

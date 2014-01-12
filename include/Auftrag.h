@@ -3,11 +3,14 @@
 #ifndef AUFTRAG_H_H
 #define AUFTRAG_H_H
 
-#include "string"
 #include "Adresse.h"
 #include "DateTime.h"
 #include "Kunde.h"
 #include "Taxi.h"
+#include <string>
+
+using namespace std;
+
 //
 class Taxi;
 class DateTime;
@@ -16,12 +19,15 @@ class Auftrag
 {
 	
 public:
+    //
+    Auftrag(Adresse* abholpunkt, DateTime* abholzeit, string anforderungen, int anzahlPersonen, DateTime* berechneteFahrzeit,
+            double berechneterFahrpreis, double fahrpreis, Adresse* fahrziel, Kunde* kunde, Taxi* taxi, DateTime* fahrzeit);
 	//
 	Adresse* getAbholpunkt();
 	//
 	DateTime* getAbholzeit();
 	//
-	std::string getAnforderungen();
+    string getAnforderungen();
 	//
 	int getAnzahlPersonen();
 	//
@@ -43,7 +49,7 @@ public:
 	//
 	void setAbholzeit(DateTime* abholzeit);
 	//
-	void setAnforderungen(std::string andorderungen);
+    void setAnforderungen(string andorderungen);
 	//
 	void setBerechneteFahrzeit(DateTime* fahrzeit);
 	//
@@ -63,13 +69,13 @@ public:
 	
 private:
 	//
-	Adresse abholpunkt;
+    Adresse* abholpunkt;
 	
 	//
 	DateTime* abholzeit;
 	
 	//
-	std::string anforderungen;
+    string anforderungen;
 	
 	//
 	int anzahlPersonen;
@@ -84,18 +90,16 @@ private:
 	double fahrpreis;
 	
 	//
-	Adresse fahrziel;
+    Adresse* fahrziel;
 	
 	//
-	Kunde * kunde;
+    Kunde* kunde;
 	
 	//
-	Taxi * taxi;
+    Taxi* taxi;
 	
 	//
-	DateTime* fahrzeit;
-	
-	
+    DateTime* fahrzeit;
 };
 
 #endif

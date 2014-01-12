@@ -7,7 +7,10 @@
 #include "Koordinate.h"
 #include "DateTime.h"
 #include "Auftrag.h"
-#include "string"
+#include <string>
+
+using namespace std;
+
 //
 class DateTime;
 class Auftrag;
@@ -16,14 +19,16 @@ class Taxi
 {
 	
 public:
+    //
+    Taxi(string extras, int sitze, int id);
 	//
-	void auftragAbschliessen(std::string daten);
+    void auftragAbschliessen(string daten);
 	//
 	bool getBelegt();
 	//
 	DateTime* getEndZeit();
 	//
-	std::string getExtras();			//std hinzugefuegt
+    string getExtras();
 	//
 	int getId();
 	//
@@ -33,11 +38,11 @@ public:
 	//
 	DateTime* getStartZeit();
 	//
-	void setAuftrag(Auftrag auftrag);
+    void setAuftrag(Auftrag* auftrag);
 	
 private:
 	//
-	Auftrag * auftraeg;					//schreibfehler
+    Auftrag* auftrag;
 	
 	//
 	bool belegt;
@@ -46,7 +51,7 @@ private:
 	DateTime* endZeit;
 	
 	//
-	std::string extras;
+    string extras;
 	
 	//
 	int id;
@@ -58,7 +63,7 @@ private:
 	DateTime* startZeit;
 	
 	//
-	Koordinate standort;
+    Koordinate* standort;
 	
 	
 };

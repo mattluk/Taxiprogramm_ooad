@@ -3,32 +3,38 @@
 
 #include "Auftragssystem.h"
 //
-void Auftragssystem::neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, std::string anforderungen, std::string fahrziel, std::string abholpunkt, std::string abholzeit)
+Auftragssystem::Auftragssystem()
 {
-	
+
 }
 
 //
-std::string Auftragssystem::alleAuftraegeToString()
+void Auftragssystem::neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, string anforderungen, string fahrziel, string abholpunkt, string abholzeit)
 {
-	return std::string();
+    //TODO: Neuer auftrag
 }
 
 //
-std::string Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt)
+string Auftragssystem::alleAuftraegeToString()
 {
-	return std::string();
+    //TODO: Auftrage in ein string packen und zurueck geben
 }
 
 //
-std::string Auftragssystem::kundeVorhanden(std::string vorname, std::string nachname, std::string strasse, std::string hausnummer)
+string Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt)
 {
-	return std::string();
+    //TODO: Passende Taxis
 }
 
 //
-int Auftragssystem::neuerKunde(Adresse* adresse, std::string vorname, std::string nachname, int telefonnummer, int handy, std::string email)
+string Auftragssystem::kundeVorhanden(string vorname, string nachname, string strasse, string hausnummer)
 {
-	return 0;
+    //TODO: Ist der Kunde vorhanden
+}
+
+//
+int Auftragssystem::neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email)
+{
+    //TODO: Neuen Kunden anlegen
 }
 

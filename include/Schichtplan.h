@@ -4,25 +4,31 @@
 #define SCHICHTPLAN_H_H
 
 #include "DateTime.h"
-#include "vector"
 #include "Kundendatenbank.h"
 #include "Taxidatenbank.h"
+#include <vector>
+
+using namespace std;
+
 //
 class Schichtplan
 {
 	
 public:
+    //
+    Schichtplan(Taxidatenbank* taxidatenbank, Kundendatenbank* kundendatenbank);
 	//
-	std::vector<Taxi*> gibFreieTaxis(DateTime* startZeit, DateTime* endZeit);
-	//
-	void setKundendatenbank(Kundendatenbank* kundendatenbank);
+    vector<Taxi*> gibFreieTaxis(DateTime* startZeit, DateTime* endZeit);
 	
 private:
 	//
-	std::vector<Taxi*> belegteTaxis;
+    vector<Taxi*> belegteTaxis;
 	
 	//
-	Taxidatenbank * taxidatenbank;
+    Taxidatenbank* taxidatenbank;
+
+    //
+    Kundendatenbank* kundendatenbank;
 	
 	
 };

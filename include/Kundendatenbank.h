@@ -3,27 +3,33 @@
 #ifndef KUNDENDATENBANK_H_H
 #define KUNDENDATENBANK_H_H
 
-#include "string"
 #include "Kunde.h"
 #include "Adresse.h"
+#include <string>
+#include <vector>
+
+using namespace std;
+
 //
 class Kundendatenbank
 {
 	
 public:
+    //
+    Kundendatenbank();
 	//
 	Kunde* getKunde(int kundenId);
 	//
-	Kunde getKunde(std::string vorname, std::string nachname, std::string strasse, int plz, std::string hausnummer);
+    Kunde getKunde(string vorname, string nachname, string strasse, int plz, string hausnummer);
 	//
-	int neuerKunde(Adresse* adresse, std::string vorname, std::string nachname, int telefonnummer, int handy, std::string email);
+    int neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email);
 	
 private:
 	//
 	static int idIndex;
 	
 	//
-	Kunde kunden;
+    vector<Kunde*> kunden;
 	
 	
 };

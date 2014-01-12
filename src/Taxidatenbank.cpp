@@ -3,14 +3,24 @@
 
 #include "Taxidatenbank.h"
 //
+Taxidatenbank::Taxidatenbank()
+{
+
+}
+
+//
 std::vector<Taxi*> Taxidatenbank::getTaxis()
 {
-    //return 0;
+    return this->taxis;
 }
 
 //
 Taxi Taxidatenbank::getTaxi(int taxiId)
 {
-	return Taxi();
+    //TODO: richtiges taxi zurueck geben
 }
 
+void Taxidatenbank::initTaxis()
+{
+
+}

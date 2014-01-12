@@ -3,49 +3,54 @@
 #ifndef ADRESSE_H_H
 #define ADRESSE_H_H
 
-#include "string"
+#include <string>
 #include "Koordinate.h"
+
+using namespace std;
+
 //
 class Adresse
 {
 	
 public:
+    //
+    Adresse(string strasse, string hausnummer, int plz, string stadt, Koordinate* koordinate);
 	//
-	std::string getHausnummer();
+    string getHausnummer();
 	//
-	Koordinate getKoordinate();
+    Koordinate* getKoordinate();
 	//
 	int getPlz();
 	//
-	std::string getStadt();
+    string getStadt();
 	//
-	std::string getStrasse();
+    string getStrasse();
 	//
-	void setHausnummer(std::string hausnummer);
+    void setHausnummer(string hausnummer);
 	//
-	void setKoordinate(Koordinate koordinate);
+    void setKoordinate(Koordinate* koordinate);
 	//
 	void setPlz(int plz);
 	//
-	void setStadt(std::string stadt);
+    void setStadt(string stadt);
 	//
-	void setStrasse(std::string strasse);
+    void setStrasse(string strasse);
 	
 private:
 	//
-	std::string hausnummer;
+    string hausnummer;
 	
 	//
 	int plz;
 	
 	//
-	std::string stadt;
+    string stadt;
 	
 	//
-	std::string strasse;
+    string strasse;
 	
 	//
-	Koordinate koordinate;
+    Koordinate* koordinate;
 	
 	
 };

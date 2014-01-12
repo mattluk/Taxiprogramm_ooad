@@ -3,46 +3,51 @@
 #ifndef KUNDE_H_H
 #define KUNDE_H_H
 
-#include "string"
 #include "Adresse.h"
+#include <string>
+
+using namespace std;
+
 //
 class Kunde
 {
 	
 public:
+    //
+    Kunde(Adresse* adresse, string email, int handy, string nachname, int telefonnummer, string vorname);
 	//
-	Adresse getAdresse();
+    Adresse* getAdresse();
 	//
-	std::string getEmail();
+    string getEmail();
 	//
 	int getHandy();
 	//
 	int getId();
 	//
-	std::string getNachname();
+    string getNachname();
 	//
 	int getTelefonnummer();
 	//
-	std::string getVorname();
+    string getVorname();
 	//
-	void setAdresse(Adresse adresse);
+    void setAdresse(Adresse* adresse);
 	//
-	void setEmail(std::string email);
+    void setEmail(string email);
 	//
 	void setHandy(int handy);
 	//
-	void setNachname(std::string nachname);
+    void setNachname(string nachname);
 	//
 	void setTelefonnummer(int telefonnummer);
 	//
-	void setVorname(std::string vorname);             //std hat gefehlt
+    void setVorname(string vorname);
 	
 private:
 	//
-	Adresse adresse;
+    Adresse* adresse;
 	
 	//
-	std::string email;
+    string email;
 	
 	//
 	int handy;
@@ -51,13 +56,13 @@ private:
 	int id;
 	
 	//
-	std::string nachname;
+    string nachname;
 	
 	//
 	int telefonnummer;
 	
 	//
-	std::string vorname;
+    string vorname;
 	
 	
 };

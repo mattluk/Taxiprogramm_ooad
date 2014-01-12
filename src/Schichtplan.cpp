@@ -3,14 +3,15 @@
 
 #include "Schichtplan.h"
 //
-std::vector<Taxi*> Schichtplan::gibFreieTaxis(DateTime* startZeit, DateTime* endZeit)
+Schichtplan::Schichtplan(Taxidatenbank *taxidatenbank, Kundendatenbank *kundendatenbank)
 {
-    //return 0;
+    this->taxidatenbank = taxidatenbank;
+    this->kundendatenbank = kundendatenbank;
 }
 
 //
-void Schichtplan::setKundendatenbank(Kundendatenbank* kundendatenbank)
+std::vector<Taxi*> Schichtplan::gibFreieTaxis(DateTime* startZeit, DateTime* endZeit)
 {
-    //this->kundendatenbank=kundendatenbank;
+    //TODO: freie Taxis
 }
 

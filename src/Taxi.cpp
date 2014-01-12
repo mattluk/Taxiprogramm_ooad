@@ -3,56 +3,64 @@
 
 #include "Taxi.h"
 //
+Taxi::Taxi(string extras, int sitze, int id)
+{
+    this->id = id;
+    this->extras = extras;
+    this->sitze = sitze;
+}
+
+//
 int Taxi::getSitze()
 {
-	return 0;
+    return this->sitze;
 }
 
 //
 Koordinate* Taxi::getStandort()
 {
-    //return Koordinate();
+    return this->standort;
 }
 
 //
-std::string Taxi::getExtras()   // std hinzugefuegt 
+string Taxi::getExtras()
 {
-	return std::string();		//std hinzugefuegt
+    return this->extras;
 }
 
 //
 int Taxi::getId()
 {
-	return 0;
+    return this->id;
 }
 
 //
 bool Taxi::getBelegt()
 {
-	return false;
+    return this->belegt;
 }
 
 //
 DateTime* Taxi::getStartZeit()
 {
-    //return DateTime();
+    return this->startZeit;
 }
 
 //
 DateTime* Taxi::getEndZeit()
 {
-    //return DateTime();
+    return this->endZeit;
 }
 
 //
-void Taxi::setAuftrag(Auftrag auftrag)
+void Taxi::setAuftrag(Auftrag* auftrag)
 {
-			//funktioniert warscheinlich wegen schreibfehler nicht
+    this->auftrag = auftrag;
 }
 
 //
-void Taxi::auftragAbschliessen(std::string daten)
+void Taxi::auftragAbschliessen(string daten)
 {
-	
+    //TODO: auftrag abschliesen...
 }
 

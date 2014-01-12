@@ -8,6 +8,8 @@ class Koordinate
 {
 	
 public:
+    //
+    Koordinate(int x, int y);
 	//
 	double getX();
 	//

@@ -3,14 +3,21 @@
 
 #include "Koordinate.h"
 //
+Koordinate::Koordinate(int x, int y)
+{
+    this->x = x;
+    this->y = y;
+}
+
+//
 double Koordinate::getY()
 {
-	return 0;
+    return this->y;
 }
 
 //
 double Koordinate::getX()
 {
-	return 0;
+    return this->x;
 }
 

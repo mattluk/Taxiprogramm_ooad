@@ -3,134 +3,152 @@
 
 #include "Auftrag.h"
 //
-int Auftrag::getAnzahlPersonen()
+Auftrag::Auftrag(Adresse* abholpunkt, DateTime* abholzeit, string anforderungen, int anzahlPersonen, DateTime* berechneteFahrzeit,
+                     double berechneterFahrpreis, double fahrpreis, Adresse* fahrziel, Kunde* kunde, Taxi* taxi, DateTime* fahrzeit)
 {
-	return 0;
+    //TODO: ID einstellen
+    this->abholpunkt = abholpunkt;
+    this->abholzeit = abholzeit;
+    this->anforderungen = anforderungen;
+    this->anzahlPersonen = anzahlPersonen;
+    this->berechneteFahrzeit = berechneteFahrzeit;
+    this->berechneterFahrpreis = berechneterFahrpreis;
+    this->fahrpreis = fahrpreis;
+    this->fahrziel = fahrziel;
+    this->kunde = kunde;
+    this->taxi = taxi;
+    this->fahrzeit = fahrzeit;
 }
 
 //
-std::string Auftrag::getAnforderungen()
+int Auftrag::getAnzahlPersonen()
 {
-	return std::string();
+    return this->anzahlPersonen;
+}
+
+//
+string Auftrag::getAnforderungen()
+{
+    return this->anforderungen;
 }
 
 //
 Adresse* Auftrag::getFahrziel()
 {
-    //return Adresse();
+    return this->fahrziel;
 }
 
 //
 Adresse* Auftrag::getAbholpunkt()
 {
-    //return Adresse();
+    return this->abholpunkt;
 }
 
 //
 DateTime* Auftrag::getAbholzeit()
 {
-    //return DateTime();
+    return this->abholzeit;
 }
 
 //
 Kunde* Auftrag::getKunde()
 {
-    //return Kunde();
+    return this->kunde;
 }
 
 //
 Taxi* Auftrag::getTaxi()
 {
-    //return Taxi();
+    return this->taxi;
 }
 
 //
 double Auftrag::getBerechneterFahrpreis()
 {
-	return 0;
+    return this->berechneterFahrpreis;
 }
 
 //
 DateTime* Auftrag::getBerechneteFahrzeit()
 {
-    //return DateTime();
+    return this->berechneteFahrzeit;
 }
 
 //
 double Auftrag::getFahrpreis()
 {
-    //return 0;
+    return this->fahrpreis;
 }
 
 //
 DateTime* Auftrag::getFahrzeit()
 {
-    //return DateTime();
+    return this->fahrzeit;
 }
 
 //
 void Auftrag::setVAnzahlPersonen(int anzahlPersonen)
 {
-	
+    this->anzahlPersonen = anzahlPersonen;
 }
 
 //
-void Auftrag::setAnforderungen(std::string andorderungen)
+void Auftrag::setAnforderungen(string andorderungen)
 {
-	
+    this->anforderungen = anforderungen;
 }
 
 //
 void Auftrag::setFahrziel(Adresse* fahrziel)
 {
-	
+    this->fahrziel = fahrziel;
 }
 
 //
 void Auftrag::setAbholpunkt(Adresse* abholpunkt)
 {
-	
+    this->abholpunkt = abholpunkt;
 }
 
 //
 void Auftrag::setKunde(Kunde* kunde)
 {
-	
+    this->kunde = kunde;
 }
 
 //
 void Auftrag::setAbholzeit(DateTime* abholzeit)
 {
-	
+    this->abholzeit = abholzeit;
 }
 
 //
 void Auftrag::setTaxi(Taxi* taxi)
 {
-	
+    this->taxi = taxi;
 }
 
 //
 void Auftrag::setBerechneterFahrpreis(double berechneterFahrpreis)
 {
-	
+    this->berechneterFahrpreis = berechneterFahrpreis;
 }
 
 //
 void Auftrag::setBerechneteFahrzeit(DateTime* fahrzeit)
 {
-	
+    this->fahrzeit = fahrzeit;
 }
 
 //
 void Auftrag::setFahrpreis(double fahrpreis)
 {
-	
+    this->fahrpreis = fahrpreis;
 }
 
 //
 void Auftrag::setFahrzeit(DateTime* fahrzeit)
 {
-	
+    this->fahrzeit = fahrzeit;
 }
 

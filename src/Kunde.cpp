@@ -3,55 +3,67 @@
 
 #include "Kunde.h"
 //
+Kunde::Kunde(Adresse *adresse, string email, int handy, string nachname, int telefonnummer, string vorname)
+{
+    //TODO: id einstellen
+    this->adresse = adresse;
+    this->email = email;
+    this->handy = handy;
+    this->nachname = nachname;
+    this->telefonnummer = telefonnummer;
+    this->vorname = vorname;
+}
+
+//
 int Kunde::getId()
 {
-	return 0;
+    return this->id;
 }
 
 //
-std::string Kunde::getVorname()
+string Kunde::getVorname()
 {
-	return std::string();
+    return this->vorname;
 }
 
 //
-std::string Kunde::getNachname()
+string Kunde::getNachname()
 {
-	return std::string();
+    return this->nachname;
 }
 
 //
 int Kunde::getTelefonnummer()
 {
-	return 0;
+    return this->telefonnummer;
 }
 
 //
 int Kunde::getHandy()
 {
-	return 0;
+    return this->handy;
 }
 
 //
-std::string Kunde::getEmail()
+string Kunde::getEmail()
 {
-	return std::string();
+    return this->email;
 }
 
 //
-Adresse Kunde::getAdresse()
+Adresse* Kunde::getAdresse()
 {
-	return Adresse();
+    return this->adresse;
 }
 
 //
-void Kunde::setVorname(std::string vorname)			//std hat gefehlt
+void Kunde::setVorname(string vorname)
 {
 	this->vorname=vorname;
 }
 
 //
-void Kunde::setNachname(std::string nachname)
+void Kunde::setNachname(string nachname)
 {
 	this->nachname=nachname;
 }
@@ -69,13 +81,13 @@ void Kunde::setHandy(int handy)
 }
 
 //
-void Kunde::setEmail(std::string email)
+void Kunde::setEmail(string email)
 {
 	this->email=email;
 }
 
 //
-void Kunde::setAdresse(Adresse adresse)
+void Kunde::setAdresse(Adresse* adresse)
 {
 	this->adresse=adresse;
 }

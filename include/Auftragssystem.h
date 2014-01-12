@@ -5,41 +5,47 @@
 
 #include "Taxi.h"
 #include "DateTime.h"
-#include "string"
 #include "Adresse.h"
 #include "Auftrag.h"
 #include "Schichtplan.h"
 #include "Status.h"
 #include "Kundendatenbank.h"
 #include "Taxidatenbank.h"
+#include <string>
+#include <vector>
+
+using namespace std;
+
 //
 class Auftragssystem
 {
 	
 public:
+    //
+    Auftragssystem();
 	//
-	std::string alleAuftraegeToString();
+    string alleAuftraegeToString();
 	//
-	std::string gibPassendeTaxis(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt);
+    string gibPassendeTaxis(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt);
 	//
-	std::string kundeVorhanden(std::string vorname, std::string nachname, std::string strasse, std::string hausnummer);
+    string kundeVorhanden(string vorname, string nachname, string strasse, string hausnummer);
 	//
-	void neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, std::string anforderungen, std::string fahrziel, std::string abholpunkt, std::string abholzeit);
+    void neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, string anforderungen, string fahrziel, string abholpunkt, string abholzeit);
 	//
-	int neuerKunde(Adresse* adresse, std::string vorname, std::string nachname, int telefonnummer, int handy, std::string email);
+    int neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email);
 	
 private:
 	//
-	std::vector<Auftrag*>* auftraege;
+    vector<Auftrag*> auftraege;
 	
 	//
-	Schichtplan schichtplan;
+    Schichtplan* schichtplan;
 	
 	//
 	Status status;
 	
 	//
-	Taxidatenbank * taxidatenbank;
+    Taxidatenbank* taxidatenbank;
 	
 	//
 	Kundendatenbank kundendatenbank;

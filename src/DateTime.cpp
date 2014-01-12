@@ -3,87 +3,97 @@
 
 #include "DateTime.h"
 //
+DateTime::DateTime(int jahr, int monat, int tag, int stunde, int minuten, int sekunden)
+{
+    this->jahr = jahr;
+    this->monat = monat;
+    this->tag = tag;
+    this->stunde = stunde;
+    this->minuten = minuten;
+    this->sekunden = sekunden;
+}
+
+//
 int DateTime::getTag()
 {
-	return 0;
+    return this->tag;
 }
 
 //
 int DateTime::getMonat()
 {
-	return 0;
+    return this->monat;
 }
 
 //
 int DateTime::getJahr()
 {
-	return 0;
+    return this->jahr;
 }
 
 //
 int DateTime::getStunde()
 {
-	return 0;
+    return this->stunde;
 }
 
 //
 int DateTime::getMinuten()
 {
-	return 0;
+    return this->minuten;
 }
 
 //
 int DateTime::getSekunden()
 {
-	return 0;
+    return this->sekunden;
 }
 
 //
 void DateTime::setTag(int tag)
 {
-	this->tag=tag;
+    this->tag = tag;
 }
 
 //
 void DateTime::setMonat(int monat)
 {
-	this->monat=monat;
+    this->monat = monat;
 }
 
 //
 void DateTime::setJahr(int jahr)
 {
-	this->jahr=jahr;
+    this->jahr = jahr;
 }
 
 //
 void DateTime::setStunde(int stunde)
 {
-	this->stunde=stunde;
+    this->stunde = stunde;
 }
 
 //
 void DateTime::setMinuten(int minuten)
 {
-	this->minuten=minuten;
+    this->minuten = minuten;
 }
 
 //
 void DateTime::setSekunden(int sekunden)
 {
-	this->sekunden=sekunden;
+    this->sekunden = sekunden;
 }
 
 //
-void DateTime::setDate(std::string date)
+void DateTime::setDate(string date)
 {
-	//this->setDate=date;  so funktioniert es!
-	//this->date=date;	   so nicht!
+    //TODO: string "date" aufloesen und alle attribute einzeln setzen(Ein format festlegen z.B. dd.mm.yyyy)
 }
 
 //
-std::string DateTime::toString()
+string DateTime::toString()
 {
-	return std::string();
+    //TODO: Datum zu string und zurueckgeben
 }
 

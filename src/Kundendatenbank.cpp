@@ -3,20 +3,26 @@
 
 #include "Kundendatenbank.h"
 //
-Kunde Kundendatenbank::getKunde(std::string vorname, std::string nachname, std::string strasse, int plz, std::string hausnummer)
+Kundendatenbank::Kundendatenbank()
 {
-	return Kunde();
+
 }
 
 //
-int Kundendatenbank::neuerKunde(Adresse* adresse, std::string vorname, std::string nachname, int telefonnummer, int handy, std::string email)
+Kunde Kundendatenbank::getKunde(string vorname, string nachname, string strasse, int plz, string hausnummer)
 {
-	return 0;
+    //TODO: getKunde
+}
+
+//
+int Kundendatenbank::neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email)
+{
+    //TODO: neuer kunde
 }
 
 //
 Kunde* Kundendatenbank::getKunde(int kundenId)
 {
-    //return Kunde();
+    //TODO::getkunde
 }
 
