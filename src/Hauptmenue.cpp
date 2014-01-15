@@ -28,8 +28,8 @@ void Hauptmenue::taxiAuftragErstellen()
 
     cout<<"Bitte geben Sie zuerst die Anzahl der Sitze ein."<<endl;
     cin>> sitze;
-    cout<<"Geben Sie Bitte jetzt die Startzeit ein (bsp. dd.mm.yyyy),";
-    cout<<" dann noch die Uhrzeit (bsp. hh.mm.ss)."<<endl;
+    cout<<"Geben Sie Bitte jetzt die Startzeit ein (bsp. dd:mm:yyyy),";
+    cout<<" dann noch die Uhrzeit (bsp. hh:mm:ss)."<<endl;
     cin>> date;
     cin>> time;
     startZeit = new DateTime (date, time);
