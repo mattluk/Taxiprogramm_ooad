@@ -12,7 +12,6 @@ Hauptmenue::Hauptmenue()
 
 void Hauptmenue::taxiAuftragErstellen()
 {
-
     int sitze;
     DateTime* startZeit;
     DateTime* endZeit;
