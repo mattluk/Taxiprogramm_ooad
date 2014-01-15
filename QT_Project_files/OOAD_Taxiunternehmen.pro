@@ -31,7 +31,6 @@ HEADERS += \
     ../include/Taxi.h \
     ../include/Status.h \
     ../include/Schichtplan.h \
-    ../include/Menue.h \
     ../include/Kundendatenbank.h \
     ../include/Kunde.h \
     ../include/Koordinate.h \
@@ -40,5 +39,6 @@ HEADERS += \
     ../include/DateTime.h \
     ../include/Auftragssystem.h \
     ../include/Auftrag.h \
-    ../include/Adresse.h
+    ../include/Adresse.h \
+    ../include/Hauptmenue.h
 

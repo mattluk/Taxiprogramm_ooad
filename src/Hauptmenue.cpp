@@ -1,15 +1,15 @@
 //@(#) Hauptmenue.cpp
 
 
-#include "Menue.h"
+#include "Hauptmenue.h"
 //
 int Hauptmenue::starten()
 {
     int eingabe=-1;
 
-	do
-	{
-		//Menue anzeigen
+    do
+    {
+        //Menue anzeigen
         cout << "Willkommen beim Taxiunternehmen, bitte geben Sie die fuer Sie gewuenschte Zahl ein" << endl;
 
         cout << "Menue" <<endl<<endl;
@@ -21,23 +21,26 @@ int Hauptmenue::starten()
         //Auswahl einlesen
         cout << "Bitte geben Sie eine Zahl ein";
         cout << "> ";
-        cin.ignore(1,' ');
         cin >> eingabe;
-        cin.clear();
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore();
+            eingabe = -1;
+        }
         cout << endl;
 
-		//Auswahl ausfuehren
-		switch(eingabe)
-		{
-            case 1: ;break;
-            case 2: ;break;
-            case 3: ;break;
-			case 9: break;
+        //Auswahl ausfuehren
+        switch(eingabe)
+        {
+        case 1: ;break;
+        case 2: ;break;
+        case 3: ;break;
+        case 9: break;
 
-            default: cout << "Das war eine falsche Eingabe versuchen Sie es bitte erneut" << endl;
+        default: cout << "Das war eine falsche Eingabe versuchen Sie es bitte erneut" << endl;
         }
     } while (eingabe!=9);
 
-	return 0;
+    return 0;
 }
 
