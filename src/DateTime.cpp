@@ -95,5 +95,6 @@ void DateTime::setDate(string date)
 string DateTime::toString()
 {
     //TODO: Datum zu string und zurueckgeben
+    return 0;
 }
 

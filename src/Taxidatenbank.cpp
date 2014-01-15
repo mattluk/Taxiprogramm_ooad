@@ -18,8 +18,9 @@ std::vector<Taxi*> Taxidatenbank::getTaxis()
 Taxi Taxidatenbank::getTaxi(int taxiId)
 {
     //TODO: richtiges taxi zurueck geben
-}
+    return Taxi(" ",0,0);
 
+}
 void Taxidatenbank::initTaxis()
 {
 

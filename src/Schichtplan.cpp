@@ -10,8 +10,9 @@ Schichtplan::Schichtplan(Taxidatenbank *taxidatenbank, Kundendatenbank *kundenda
 }
 
 //
-std::vector<Taxi*> Schichtplan::gibFreieTaxis(DateTime* startZeit, DateTime* endZeit)
+vector<Taxi*> Schichtplan::gibFreieTaxis(DateTime* startZeit, DateTime* endZeit)
 {
     //TODO: freie Taxis
+    return vector <Taxi*> ();
 }
 
