@@ -7,6 +7,8 @@ INCLUDEPATH += ../include
 QMAKE_CFLAGS_WARN_ON -= -Wall
 QMAKE_CXXFLAGS_WARN_ON -= -Wall
 
+LIBS += -lcppunit
+
 SOURCES += \
     ../src/TaxiKomSys.cpp \
     ../src/Taxidatenbank.cpp \
@@ -23,7 +25,8 @@ SOURCES += \
     ../src/DateTime.cpp \
     ../src/Auftragssystem.cpp \
     ../src/Auftrag.cpp \
-    ../src/Adresse.cpp
+    ../src/Adresse.cpp \
+    testingclass.cpp
 
 HEADERS += \
     ../include/TaxiKomSys.h \
@@ -40,5 +43,6 @@ HEADERS += \
     ../include/Auftragssystem.h \
     ../include/Auftrag.h \
     ../include/Adresse.h \
-    ../include/Hauptmenue.h
+    ../include/Hauptmenue.h \
+    testingclass.h
 

@@ -15,15 +15,13 @@ public:
     //
     Taxidatenbank();
 	//
-	Taxi getTaxi(int taxiId);
+    Taxi* getTaxi(int taxiId);
 	//
     vector<Taxi*> getTaxis();
-    //
-    void initTaxis();
-	
+
 private:
 	//
-	static int idIndex;
+    static int idIndex;
 	
 	//
     vector<Taxi*> taxis;

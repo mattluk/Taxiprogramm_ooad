@@ -5,6 +5,9 @@
 
 #include "Taxi.h"
 #include <string>
+#include <stdlib.h>
+#include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -15,7 +18,13 @@ class DateTime
 public:
     //
     DateTime(int jahr, int monat, int tag, int stunde, int minuten, int sekunden);
+    //
+    DateTime(string date, string time);
 	//
+    string dateToString();
+    //
+    string timeToString();
+    //
 	int getJahr();
 	//
 	int getMinuten();
@@ -41,9 +50,7 @@ public:
 	void setStunde(int stunde);
 	//
 	void setTag(int tag);
-	//
-    string toString();
-	
+
 private:
 	//
 	int jahr;

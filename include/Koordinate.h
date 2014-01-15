@@ -14,6 +14,8 @@ public:
 	double getX();
 	//
 	double getY();
+
+    bool operator==(Koordinate* koordinate);
 	
 private:
 	//

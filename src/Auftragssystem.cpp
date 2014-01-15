@@ -24,8 +24,10 @@ string Auftragssystem::alleAuftraegeToString()
 //
 string Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt)
 {
-    //TODO: Passende Taxis
-    return "";
+    vector<Taxi*> freieTaxis = this->schichtplan->gibFreieTaxis(startZeit, endZeit);
+    for (unsigned int i = 0; i < freieTaxis.size(); i++) {
+
+    }
 }
 
 //

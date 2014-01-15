@@ -72,3 +72,21 @@ void Adresse::setKoordinate(Koordinate* koordinate)
 	this->koordinate=koordinate;
 }
 
+bool Adresse::operator ==(Adresse* adresse) {
+    if (this->hausnummer != adresse->hausnummer)
+        return false;
+
+    if (this->plz != adresse->getPlz())
+        return false;
+
+    if (this->stadt != adresse->getStadt())
+        return false;
+
+    if (this->strasse != adresse->getStrasse())
+        return false;
+
+    if (this->koordinate != adresse->getKoordinate())
+        return false;
+
+    return true;
+}

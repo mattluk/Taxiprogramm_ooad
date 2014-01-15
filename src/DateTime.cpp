@@ -14,6 +14,58 @@ DateTime::DateTime(int jahr, int monat, int tag, int stunde, int minuten, int se
 }
 
 //
+DateTime::DateTime(string date, string time) {
+    this->tag = atoi(date.substr(0, 2).c_str());
+    this->monat = atoi(date.substr(3, 2).c_str());
+    this->jahr = atoi(date.substr(6, 4).c_str());
+    this->stunde = atoi(time.substr(0, 2).c_str());
+    this->minuten = atoi(time.substr(3, 2).c_str());
+    this->sekunden = atoi(time.substr(6, 2).c_str());
+}
+
+//
+string DateTime::dateToString() {
+    stringstream tagS;
+    stringstream monatS;
+    stringstream jahrS;
+    if (this->tag < 10)
+        tagS << "0" << this->tag;
+    else
+        tagS << this->tag;
+
+    if (this->monat << 10)
+        monatS << "0" << this->monat;
+    else
+        monatS << this->monat;
+
+    jahrS << this->jahr;
+    return (tagS.str() + "." + monatS.str() + "." + jahrS.str());
+}
+
+string DateTime::timeToString() {
+    stringstream stundeS;
+    stringstream minutenS;
+    stringstream sekundenS;
+
+    if (this->stunde < 10)
+        stundeS << "0" << this->stunde;
+    else
+        stundeS << this->stunde;
+
+    if (this->minuten < 10)
+        minutenS << "0" << this->minuten;
+    else
+        minutenS << this->minuten;
+
+    if (this->sekunden < 10)
+        sekundenS << "0" << this->sekunden;
+    else
+        sekundenS << this->sekunden;
+
+    return (stundeS.str() + ":" + minutenS.str() + ":" + sekundenS.str());
+}
+
+//
 int DateTime::getTag()
 {
     return this->tag;
@@ -89,12 +141,5 @@ void DateTime::setSekunden(int sekunden)
 void DateTime::setDate(string date)
 {
     //TODO: string "date" aufloesen und alle attribute einzeln setzen(Ein format festlegen z.B. dd.mm.yyyy)
-}
-
-//
-string DateTime::toString()
-{
-    //TODO: Datum zu string und zurueckgeben
-    return 0;
 }
 
