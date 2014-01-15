@@ -1,13 +1,14 @@
 #include <iostream>
 #include "Hauptmenue.h"
-//#include "testingclass.h"
+#include "testingclass.h"
 
 using namespace std;
 
 int main()
 {
-    //TestingClass* tc = new TestingClass();
-    //tc->testDatumKlasse();
+    TestingClass* tc = new TestingClass();
+    tc->testDatumKlasse();
+    tc->testAdresseKlasse();
 
     Hauptmenue* hm = new Hauptmenue();
     hm->starten();

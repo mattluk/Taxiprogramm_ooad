@@ -51,6 +51,8 @@ public:
 	//
 	void setTag(int tag);
 
+    bool operator==(DateTime* dateTime);
+
 private:
 	//
 	int jahr;

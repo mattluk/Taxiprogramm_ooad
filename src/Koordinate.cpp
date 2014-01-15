@@ -3,7 +3,7 @@
 
 #include "Koordinate.h"
 //
-Koordinate::Koordinate(int x, int y)
+Koordinate::Koordinate(double x, double y)
 {
     this->x = x;
     this->y = y;

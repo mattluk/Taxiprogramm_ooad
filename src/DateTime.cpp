@@ -66,6 +66,29 @@ string DateTime::timeToString() {
 }
 
 //
+bool DateTime::operator ==(DateTime* dateTime) {
+    if (this->jahr != dateTime->getJahr())
+        return false;
+
+    if (this->monat != dateTime->getMonat())
+        return false;
+
+    if (this->tag != dateTime->getTag())
+        return false;
+
+    if (this->stunde != dateTime->getStunde())
+        return false;
+
+    if (this->minuten != dateTime->getMinuten())
+        return false;
+
+    if (this->sekunden != dateTime->getSekunden())
+        return false;
+
+    return true;
+}
+
+//
 int DateTime::getTag()
 {
     return this->tag;

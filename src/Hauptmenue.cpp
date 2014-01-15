@@ -23,8 +23,8 @@ void Hauptmenue::taxiAuftragErstellen()
     string stadt;
     Adresse* abholpunkt;
     Koordinate* koordinate;
-    int xKoordinate;
-    int yKoordinate;
+    double xKoordinate;
+    double yKoordinate;
 
     cout<<"Bitte geben Sie zuerst die Anzahl der Sitze ein."<<endl;
     cin>> sitze;
@@ -38,7 +38,7 @@ void Hauptmenue::taxiAuftragErstellen()
     cin>> date;
     cin>> time;
     endZeit = new DateTime (date,time);
-    cout<<" Nun geben Sie bitte noch den Abholpunkt (bsp. strasse,plz,stadt,koordinate ) "<<endl;
+    cout<<" Nun geben Sie bitte noch den Abholpunkt (bsp. strasse,hausnummer,plz,stadt,xKoordinate, yKoordinate ) "<<endl;
     cin>> strasse;
     cin>> hausnummer;
     cin>> plz;

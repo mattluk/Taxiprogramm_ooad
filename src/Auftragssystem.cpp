@@ -25,10 +25,17 @@ string Auftragssystem::alleAuftraegeToString()
 string Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt)
 {
     vector<Taxi*> freieTaxis = this->schichtplan->gibFreieTaxis(startZeit, endZeit);
+    Taxi* tmpTaxi;
     for (unsigned int i = 0; i < freieTaxis.size(); i++) {
-
+        tmpTaxi = freieTaxis.at(i);
+        if (tmpTaxi->getSitze() == sitze && tmpTaxi->getStartZeit() == startZeit &&
+                tmpTaxi->getEndZeit() == endZeit) {
+            freieTaxis.push_back(tmpTaxi);
+        }
     }
+
     return "";
+
 }
 
 //

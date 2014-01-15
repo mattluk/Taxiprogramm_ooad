@@ -9,7 +9,7 @@ class Koordinate
 	
 public:
     //
-    Koordinate(int x, int y);
+    Koordinate(double x, double y);
 	//
 	double getX();
 	//
