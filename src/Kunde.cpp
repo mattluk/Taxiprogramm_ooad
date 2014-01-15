@@ -92,3 +92,4 @@ void Kunde::setAdresse(Adresse* adresse)
 	this->adresse=adresse;
 }
 
+

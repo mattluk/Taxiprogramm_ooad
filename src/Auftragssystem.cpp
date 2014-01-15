@@ -28,6 +28,7 @@ string Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, DateTime
     for (unsigned int i = 0; i < freieTaxis.size(); i++) {
 
     }
+    return "";
 }
 
 //

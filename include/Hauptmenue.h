@@ -11,13 +11,16 @@ using namespace std;
 class Hauptmenue
 {
 	
+
 public:
 	//
+    Hauptmenue();
 	int starten();
+    void taxiAuftragErstellen();
 	
 private:
 	//
-	Auftragssystem auftragssystem;
+    Auftragssystem* auftragssystem;
 	
 	
 };

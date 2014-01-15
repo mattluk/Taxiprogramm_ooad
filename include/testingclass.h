@@ -1,7 +1,7 @@
 #ifndef TESTINGCLASS_H
 #define TESTINGCLASS_H
 
-#include <cppunit/TestCase.h>
+#include <../cppunit/include/>
 #include "DateTime.h"
 
 class TestingClass : public CppUnit::TestCase

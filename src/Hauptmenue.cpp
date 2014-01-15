@@ -2,7 +2,56 @@
 
 
 #include "Hauptmenue.h"
+#include "Auftragssystem.h"
 //
+
+Hauptmenue::Hauptmenue()
+{
+   auftragssystem = new Auftragssystem();
+}
+
+void Hauptmenue::taxiAuftragErstellen()
+{
+
+    int sitze;
+    DateTime* startZeit;
+    DateTime* endZeit;
+    string date;
+    string time;
+    string strasse;
+    string hausnummer;
+    int plz;
+    string stadt;
+    Adresse* abholpunkt;
+    Koordinate* koordinate;
+    int xKoordinate;
+    int yKoordinate;
+
+    cout<<"Bitte geben Sie zuerst die Anzahl der Sitze ein."<<endl;
+    cin>> sitze;
+    cout<<"Geben Sie Bitte jetzt die Startzeit ein (bsp. dd.mm.yyyy),";
+    cout<<" dann noch die Uhrzeit (bsp. hh.mm.ss)."<<endl;
+    cin>> date;
+    cin>> time;
+    startZeit = new DateTime (date, time);
+    cout<<"Geben Sie Bitte jetzt die Endzeit ein (bsp. dd:mm:yyyy),";
+    cout<<" dann noch die Uhrzeit (bsp. hh:mm:ss)."<<endl;
+    cin>> date;
+    cin>> time;
+    endZeit = new DateTime (date,time);
+    cout<<" Nun geben Sie bitte noch den Abholpunkt (bsp. strasse,plz,stadt,koordinate ) "<<endl;
+    cin>> strasse;
+    cin>> hausnummer;
+    cin>> plz;
+    cin>> stadt;
+    cin>> xKoordinate;
+    cin>> yKoordinate;
+    koordinate=new Koordinate (xKoordinate,yKoordinate);
+    abholpunkt = new Adresse (strasse,hausnummer,plz,stadt,koordinate);
+    auftragssystem->gibPassendeTaxis(sitze,startZeit,endZeit,abholpunkt);
+}
+
+
 int Hauptmenue::starten()
 {
     int eingabe=-1;
@@ -34,7 +83,7 @@ int Hauptmenue::starten()
         {
         case 1: ;break;
         case 2: ;break;
-        case 3: ;break;
+        case 3: taxiAuftragErstellen();break;
         case 9: break;
 
         default: cout << "Das war eine falsche Eingabe versuchen Sie es bitte erneut" << endl;
@@ -43,4 +92,8 @@ int Hauptmenue::starten()
 
     return 0;
 }
+
+
+
+
 
