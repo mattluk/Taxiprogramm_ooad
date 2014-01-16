@@ -19,6 +19,8 @@ public:
 
     int getEntfernung(Adresse* start, Adresse* ziel);
 
+    int getEntfernung(Koordinate* start, Koordinate* ziel);
+
 private:
     int kleinsterWeg(int startknoten, int zielknoten, int max);
 

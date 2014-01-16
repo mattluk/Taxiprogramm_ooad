@@ -3,11 +3,13 @@
 
 #include "Taxi.h"
 //
-Taxi::Taxi(string extras, int sitze, int id)
+Taxi::Taxi(string extras, int sitze, Koordinate *standort, int id)
 {
     this->id = id;
     this->extras = extras;
     this->sitze = sitze;
+    this->auftraege = vector<Auftrag*>();
+    this->standort = standort;
 }
 
 //
@@ -35,27 +37,9 @@ int Taxi::getId()
 }
 
 //
-bool Taxi::getBelegt()
+void Taxi::addAuftrag(Auftrag* auftrag)
 {
-    return this->belegt;
-}
-
-//
-DateTime* Taxi::getStartZeit()
-{
-    return this->startZeit;
-}
-
-//
-DateTime* Taxi::getEndZeit()
-{
-    return this->endZeit;
-}
-
-//
-void Taxi::setAuftrag(Auftrag* auftrag)
-{
-    this->auftrag = auftrag;
+    this->auftraege.push_back(auftrag);
 }
 
 //
@@ -64,3 +48,7 @@ void Taxi::auftragAbschliessen(string daten)
     //TODO: auftrag abschliesen...
 }
 
+//
+vector<Auftrag*> Taxi::getAuftraege() {
+    return this->auftraege;
+}

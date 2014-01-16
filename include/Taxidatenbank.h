@@ -18,6 +18,8 @@ public:
     Taxi* getTaxi(int taxiId);
 	//
     vector<Taxi*> getTaxis();
+    //
+    void addTaxi(string extras, int sitze, Koordinate* standort);
 
 private:
 	//

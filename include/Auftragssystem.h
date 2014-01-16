@@ -27,13 +27,15 @@ public:
 	//
     string alleAuftraegeToString();
 	//
-    string gibPassendeTaxis(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt);
+    Taxi* gibPassendesTaxi(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt);
 	//
     string kundeVorhanden(string vorname, string nachname, string strasse, string hausnummer);
 	//
     void neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, string anforderungen, Adresse* fahrziel, Adresse* abholpunkt, DateTime* abholzeit);
 	//
     int neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email);
+    //
+    Taxidatenbank* getTaxidatenbank();
 	
 private:
 	//
@@ -42,14 +44,14 @@ private:
 	//
     Schichtplan* schichtplan;
 	
-	//
+    //
 	Status status;
 	
 	//
     Taxidatenbank* taxidatenbank;
 	
 	//
-	Kundendatenbank kundendatenbank;
+    Kundendatenbank* kundendatenbank;
 
     //
     Karte* karte;

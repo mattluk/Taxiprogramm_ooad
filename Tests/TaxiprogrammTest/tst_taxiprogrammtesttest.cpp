@@ -5,6 +5,8 @@
 #include "Adresse.h"
 #include "Koordinate.h"
 #include "Karte.h"
+#include "Taxidatenbank.h"
+#include "Auftragssystem.h"
 
 using namespace std;
 
@@ -19,6 +21,7 @@ private Q_SLOTS:
     void testDatum();
     void testAdresse();
     void testKarte();
+    void testGibPassendeTaxis();
 };
 
 TaxiprogrammTestTest::TaxiprogrammTestTest()
@@ -47,6 +50,29 @@ void TaxiprogrammTestTest::testKarte() {
     Adresse* adresse1 = new Adresse("", "", 0, "", new Koordinate(97, 4));
     Adresse* adresse2 = new Adresse("", "", 0, "", new Koordinate(4, 4));
     cout << karte->getEntfernung(adresse1, adresse2) << endl;
+}
+
+void TaxiprogrammTestTest::testGibPassendeTaxis() {
+    Auftragssystem* auftragssystem = new Auftragssystem();
+    auftragssystem->getTaxidatenbank()->addTaxi("1", 1, new Koordinate(3, 5));
+    auftragssystem->getTaxidatenbank()->addTaxi("2", 2, new Koordinate(32, 25));
+    auftragssystem->getTaxidatenbank()->addTaxi("3", 3, new Koordinate(73, 28));
+    auftragssystem->getTaxidatenbank()->addTaxi("4", 4, new Koordinate(4, 100));
+    Taxi* taxi = auftragssystem->gibPassendesTaxi(2,
+                                                  new DateTime("16.01.2014", "20:46:30"),
+                                                  new DateTime("16.01.2014", "20:55:30"),
+                                                  new Adresse("", "", 0, "", new Koordinate(70, 30)));
+
+    taxi->addAuftrag(new Auftrag(new Adresse("", "", 0, "", new Koordinate(70, 30)),
+                                 new DateTime("16.01.2014", "20:45:30"), "", 0,
+                                 new DateTime("16.01.2014", "20:47:00"), 0,
+                                 0, NULL, NULL, NULL, NULL));
+
+    taxi = auftragssystem->gibPassendesTaxi(2,
+                                                      new DateTime("16.01.2014", "20:46:30"),
+                                                      new DateTime("16.01.2014", "20:55:30"),
+                                                      new Adresse("", "", 0, "", new Koordinate(70, 30)));
+    int test = 0;
 }
 
 QTEST_APPLESS_MAIN(TaxiprogrammTestTest)

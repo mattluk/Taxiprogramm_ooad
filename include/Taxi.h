@@ -8,6 +8,7 @@
 #include "DateTime.h"
 #include "Auftrag.h"
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -20,13 +21,9 @@ class Taxi
 	
 public:
     //
-    Taxi(string extras, int sitze, int id);
+    Taxi(string extras, int sitze, Koordinate* standort, int id);
 	//
     void auftragAbschliessen(string daten);
-	//
-	bool getBelegt();
-	//
-	DateTime* getEndZeit();
 	//
     string getExtras();
 	//
@@ -34,21 +31,17 @@ public:
 	//
 	int getSitze();
 	//
-	Koordinate* getStandort();
+    Koordinate* getStandort();
+    //
+    void setStandort(Koordinate* koordinate);
 	//
-	DateTime* getStartZeit();
-	//
-    void setAuftrag(Auftrag* auftrag);
+    void addAuftrag(Auftrag* auftrag);
+    //
+    vector<Auftrag*>getAuftraege();
 	
 private:
 	//
-    Auftrag* auftrag;
-	
-	//
-	bool belegt;
-	
-	//
-	DateTime* endZeit;
+    vector<Auftrag*> auftraege;
 	
 	//
     string extras;
@@ -57,10 +50,7 @@ private:
 	int id;
 	
 	//
-	int sitze;
-	
-	//
-	DateTime* startZeit;
+    int sitze;
 	
 	//
     Koordinate* standort;

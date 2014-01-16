@@ -6,6 +6,14 @@
 Auftragssystem::Auftragssystem()
 {
     this->karte = new Karte();
+    this->taxidatenbank = new Taxidatenbank();
+    this->kundendatenbank = new Kundendatenbank();
+    this->schichtplan = new Schichtplan(this->taxidatenbank, this->kundendatenbank);
+}
+
+//
+Taxidatenbank* Auftragssystem::getTaxidatenbank() {
+    return this->taxidatenbank;
 }
 
 //
@@ -23,20 +31,27 @@ string Auftragssystem::alleAuftraegeToString()
 }
 
 //
-string Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt)
+Taxi* Auftragssystem::gibPassendesTaxi(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt)
 {
     vector<Taxi*> freieTaxis = this->schichtplan->gibFreieTaxis(startZeit, endZeit);
-    Taxi* tmpTaxi;
+    if (freieTaxis.size() == 0) {
+        return NULL;
+    }
+
+    Taxi* currentTaxi;
+    Taxi* currentMinTaxi = freieTaxis.at(0);
+    int min = this->karte->getEntfernung(abholpunkt->getKoordinate(), currentMinTaxi->getStandort());
     for (unsigned int i = 0; i < freieTaxis.size(); i++) {
-        tmpTaxi = freieTaxis.at(i);
-        if (tmpTaxi->getSitze() == sitze && tmpTaxi->getStartZeit() == startZeit &&
-                tmpTaxi->getEndZeit() == endZeit) {
-            freieTaxis.push_back(tmpTaxi);
+        currentTaxi = freieTaxis.at(i);
+        if (currentTaxi->getSitze() >= sitze) {
+            if (min > this->karte->getEntfernung(abholpunkt->getKoordinate(), currentTaxi->getStandort())) {
+                min = this->karte->getEntfernung(abholpunkt->getKoordinate(), currentTaxi->getStandort());
+                currentMinTaxi = currentTaxi;
+            }
         }
     }
 
-    return "";
-
+    return currentMinTaxi;
 }
 
 //

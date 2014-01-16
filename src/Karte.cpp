@@ -68,6 +68,15 @@ Karte::Karte() {
     punktKoordinaten.push_back(new Koordinate(100, 100));
 }
 
+int Karte::getEntfernung(Koordinate *start, Koordinate *ziel) {
+    int startPunkt = naehesterPunkt(start);
+    int zielPunkt = naehesterPunkt(ziel);
+    int x = abstandZwischenZweiPunkten(start, punktKoordinaten.at(startPunkt));
+    int y = abstandZwischenZweiPunkten(ziel, punktKoordinaten.at(zielPunkt));
+    int z = kleinsterWeg(startPunkt, zielPunkt, 13);
+    return x+y+z;
+}
+
 int Karte::getEntfernung(Adresse *start, Adresse *ziel) {
     int startPunkt = naehesterPunkt(start->getKoordinate());
     int zielPunkt = naehesterPunkt(ziel->getKoordinate());

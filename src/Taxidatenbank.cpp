@@ -5,17 +5,7 @@
 //
 Taxidatenbank::Taxidatenbank()
 {
-    Taxi* taxi = new Taxi("Kindersitze", 7, idIndex++);
-    this->taxis.push_back(taxi);
-
-    taxi = new Taxi("Hunde", 5, idIndex++);
-    this->taxis.push_back(taxi);
-
-    taxi = new Taxi("Behinderte", 3, idIndex++);
-    this->taxis.push_back(taxi);
-
-    taxi = new Taxi("", 4, idIndex++);
-    this->taxis.push_back(taxi);
+    this->taxis = vector<Taxi*>();
 }
 
 //
@@ -33,6 +23,11 @@ Taxi* Taxidatenbank::getTaxi(int taxiId)
         }
     }
     return NULL;
+}
+
+void Taxidatenbank::addTaxi(string extras, int sitze, Koordinate* standort) {
+    Taxi* taxi = new Taxi(extras, sitze, standort, idIndex++);
+    this->taxis.push_back(taxi);
 }
 
 int Taxidatenbank::idIndex = 0;

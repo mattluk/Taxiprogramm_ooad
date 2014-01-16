@@ -3,21 +3,21 @@
 
 #include "Auftrag.h"
 //
-Auftrag::Auftrag(Adresse* abholpunkt, DateTime* abholzeit, string anforderungen, int anzahlPersonen, DateTime* berechneteFahrzeit,
-                     double berechneterFahrpreis, double fahrpreis, Adresse* fahrziel, Kunde* kunde, Taxi* taxi, DateTime* fahrzeit)
+Auftrag::Auftrag(Adresse* abholpunkt, DateTime* abholzeit, string anforderungen, int anzahlPersonen, DateTime* berechneteEndzeit,
+                     double berechneterFahrpreis, double fahrpreis, Adresse* fahrziel, Kunde* kunde, Taxi* taxi, DateTime* endzeit)
 {
     //TODO: ID einstellen
     this->abholpunkt = abholpunkt;
     this->abholzeit = abholzeit;
     this->anforderungen = anforderungen;
     this->anzahlPersonen = anzahlPersonen;
-    this->berechneteFahrzeit = berechneteFahrzeit;
+    this->berechneteEndzeit = berechneteEndzeit;
     this->berechneterFahrpreis = berechneterFahrpreis;
     this->fahrpreis = fahrpreis;
     this->fahrziel = fahrziel;
     this->kunde = kunde;
     this->taxi = taxi;
-    this->fahrzeit = fahrzeit;
+    this->endzeit = endzeit;
 }
 
 //
@@ -45,12 +45,6 @@ Adresse* Auftrag::getAbholpunkt()
 }
 
 //
-DateTime* Auftrag::getAbholzeit()
-{
-    return this->abholzeit;
-}
-
-//
 Kunde* Auftrag::getKunde()
 {
     return this->kunde;
@@ -69,25 +63,13 @@ double Auftrag::getBerechneterFahrpreis()
 }
 
 //
-DateTime* Auftrag::getBerechneteFahrzeit()
-{
-    return this->berechneteFahrzeit;
-}
-
-//
 double Auftrag::getFahrpreis()
 {
     return this->fahrpreis;
 }
 
 //
-DateTime* Auftrag::getFahrzeit()
-{
-    return this->fahrzeit;
-}
-
-//
-void Auftrag::setVAnzahlPersonen(int anzahlPersonen)
+void Auftrag::setAnzahlPersonen(int anzahlPersonen)
 {
     this->anzahlPersonen = anzahlPersonen;
 }
@@ -117,12 +99,6 @@ void Auftrag::setKunde(Kunde* kunde)
 }
 
 //
-void Auftrag::setAbholzeit(DateTime* abholzeit)
-{
-    this->abholzeit = abholzeit;
-}
-
-//
 void Auftrag::setTaxi(Taxi* taxi)
 {
     this->taxi = taxi;
@@ -135,20 +111,16 @@ void Auftrag::setBerechneterFahrpreis(double berechneterFahrpreis)
 }
 
 //
-void Auftrag::setBerechneteFahrzeit(DateTime* fahrzeit)
-{
-    this->fahrzeit = fahrzeit;
-}
-
-//
 void Auftrag::setFahrpreis(double fahrpreis)
 {
     this->fahrpreis = fahrpreis;
 }
 
 //
-void Auftrag::setFahrzeit(DateTime* fahrzeit)
-{
-    this->fahrzeit = fahrzeit;
+DateTime* Auftrag::getAbholzeit() {
+    return this->abholzeit;
 }
 
+DateTime* Auftrag::getBerechneteEndzeit() {
+    return this->berechneteEndzeit;
+}
