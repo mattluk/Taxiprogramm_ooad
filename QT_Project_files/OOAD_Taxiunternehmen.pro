@@ -25,7 +25,6 @@ SOURCES += \
     ../src/Auftragssystem.cpp \
     ../src/Auftrag.cpp \
     ../src/Adresse.cpp \
-    ../src/Testingclass.cpp \
     ../src/Karte.cpp
 
 HEADERS += \
@@ -44,6 +43,5 @@ HEADERS += \
     ../include/Auftrag.h \
     ../include/Adresse.h \
     ../include/Hauptmenue.h \
-    ../include/Testingclass.h \
     ../include/Karte.h
 

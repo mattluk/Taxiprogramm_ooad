@@ -66,7 +66,7 @@ string DateTime::timeToString() {
 }
 
 //
-bool DateTime::operator ==(DateTime* dateTime) {
+bool DateTime::isEqual(DateTime* dateTime) {
     if (this->jahr != dateTime->getJahr())
         return false;
 
@@ -83,6 +83,51 @@ bool DateTime::operator ==(DateTime* dateTime) {
         return false;
 
     if (this->sekunden != dateTime->getSekunden())
+        return false;
+
+    return true;
+}
+
+//
+bool DateTime::isAfter(DateTime *dateTime) {
+    if (this->jahr < dateTime->getJahr())
+        return false;
+    else if (this->jahr < dateTime->getJahr())
+        return true;
+
+    if (this->monat < dateTime->getMonat())
+        return false;
+    else if (this->monat < dateTime->getMonat())
+        return true;
+
+    if (this->tag < dateTime->getTag())
+        return false;
+    else if (this->tag < dateTime->getTag())
+        return true;
+
+    if (this->stunde < dateTime->getStunde())
+        return false;
+    else if (this->stunde < dateTime->getStunde())
+        return true;
+
+    if (this->minuten < dateTime->getMinuten())
+        return false;
+    else if (this->minuten < dateTime->getMinuten())
+        return true;
+
+    if (this->sekunden < dateTime->getSekunden())
+        return false;
+    else if (this->sekunden < dateTime->getSekunden())
+        return true;
+
+    return false;
+}
+
+//
+bool DateTime::isBefore(DateTime *dateTime) {
+    if (this->isEqual(dateTime))
+        return false;
+    if (this->isAfter(dateTime))
         return false;
 
     return true;

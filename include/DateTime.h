@@ -50,8 +50,12 @@ public:
 	void setStunde(int stunde);
 	//
 	void setTag(int tag);
-
-    bool operator==(DateTime* dateTime);
+    //
+    bool isEqual(DateTime* dateTime);
+    //
+    bool isAfter(DateTime* dateTime);
+    //
+    bool isBefore(DateTime* dateTime);
 
 private:
 	//
