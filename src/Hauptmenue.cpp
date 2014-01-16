@@ -2,12 +2,11 @@
 
 
 #include "Hauptmenue.h"
-#include "Auftragssystem.h"
 //
 
 Hauptmenue::Hauptmenue()
 {
-   auftragssystem = new Auftragssystem();
+    auftragssystem = new Auftragssystem();
 }
 
 void Hauptmenue::taxiAuftragErstellen()
@@ -15,41 +14,83 @@ void Hauptmenue::taxiAuftragErstellen()
     int sitze;
     DateTime* startZeit;
     DateTime* endZeit;
-    string date;
-    string time;
+    string date1;
+    string time1;
+    string date2;
+    string time2;
     string strasse;
     string hausnummer;
     int plz;
     string stadt;
-    Adresse* abholpunkt;
-    Koordinate* koordinate;
-    int xKoordinate;
-    int yKoordinate;
+    //    Adresse* abholpunkt;
+    //    Koordinate* koordinate;
+    //    double xKoordinate;
+    //    double yKoordinate;
 
-    cout<<"Bitte geben Sie zuerst die Anzahl der Sitze ein."<<endl;
+    cout<<"Bitte geben Sie zuerst die Anzahl der Sitze ein!(max 7 Sitze)"<<endl;
     cin>> sitze;
-    cout<<"Geben Sie Bitte jetzt die Startzeit ein (bsp. dd:mm:yyyy),";
+    if (sitze<=7)
+    {
+    }
+    else
+    {
+        cout<<"Ihre Anzahl der Sitze war zu Hoch bitte versuchen sie es erneut!"<<endl;
+    }
+    cout<<"Geben Sie Bitte jetzt ihr Datum ein (bsp. dd:mm:yyyy),";
+    cout<<" im Anschluss noch die Uhrzeit (bsp. hh:mm:ss)."<<endl;
+    cin>> date1;
+    cin>> time1;
+    cout<<"Geben Sie bitte jetzt die Datum ein (bsp. dd:mm:yyyy),";
     cout<<" dann noch die Uhrzeit (bsp. hh:mm:ss)."<<endl;
-    cin>> date;
-    cin>> time;
-    startZeit = new DateTime (date, time);
-    cout<<"Geben Sie Bitte jetzt die Endzeit ein (bsp. dd:mm:yyyy),";
-    cout<<" dann noch die Uhrzeit (bsp. hh:mm:ss)."<<endl;
-    cin>> date;
-    cin>> time;
-    endZeit = new DateTime (date,time);
+    cin>> date2;
+    cin>> time2;
+
+    if (  date1==date2 || time1==time2             ||
+         (atoi(date1.substr(0, 2).c_str()) >=32    ||
+          atoi(date1.substr(0, 2).c_str())< 0      ||
+          atoi(date1.substr(3, 2).c_str())>=13     ||
+          atoi(date1.substr(3, 2).c_str())<=0      ||
+          atoi(date2.substr(0, 2).c_str()) >=32    ||
+          atoi(date2.substr(0, 2).c_str())< 0      ||
+          atoi(date2.substr(3, 2).c_str())>=13     ||
+          atoi(date2.substr(3, 2).c_str())<=0)     ||
+          atoi(time1.substr(0, 2).c_str())>=25     ||
+          atoi(time1.substr(0, 2).c_str())<0       ||
+          atoi(time1.substr(3, 2).c_str())>=60     ||
+          atoi(time1.substr(3, 2).c_str())<0       ||
+          atoi(time1.substr(6, 2).c_str())>=60     ||
+          atoi(time1.substr(6, 2).c_str())<0       ||
+          atoi(time2.substr(0, 2).c_str())>=25     ||
+          atoi(time2.substr(0, 2).c_str())<0       ||
+          atoi(time2.substr(3, 2).c_str())>=60     ||
+          atoi(time2.substr(3, 2).c_str())<0       ||
+          atoi(time2.substr(6, 2).c_str())>=60     ||
+          atoi(time2.substr(6, 2).c_str())<0)
+
+    {
+        cout<<endl;
+        cout<<"Sie haben eine falsche eingabe getaetigt, bitte versuchen sie es erneut!"<<endl<<endl;
+    }
+    else
+    {
+        startZeit = new DateTime (date1, time1);
+        endZeit = new DateTime (date2,time2);
+
+    }
+
     cout<<" Nun geben Sie bitte noch den Abholpunkt (bsp. strasse,hausnummer,plz,stadt,xKoordinate, yKoordinate ) "<<endl;
     cin>> strasse;
     cin>> hausnummer;
     cin>> plz;
     cin>> stadt;
-    cin>> xKoordinate;
-    cin>> yKoordinate;
-    koordinate=new Koordinate (xKoordinate,yKoordinate);
-    abholpunkt = new Adresse (strasse,hausnummer,plz,stadt,koordinate);
-    auftragssystem->gibPassendeTaxis(sitze,startZeit,endZeit,abholpunkt);
+    for(int i=0; i<stadt.length(); i++)
+    {
+        if(stadt[i] >= '0' && stadt[i] <= '9')
+        {
+            cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer die Stadt eingesetzt.Versuchen Sie es erneut!"<<endl;
+        }
+    }
 }
-
 
 int Hauptmenue::starten()
 {
@@ -91,6 +132,7 @@ int Hauptmenue::starten()
 
     return 0;
 }
+
 
 
 

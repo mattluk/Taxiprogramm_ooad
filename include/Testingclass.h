@@ -1,7 +1,7 @@
 #ifndef TESTINGCLASS_H
 #define TESTINGCLASS_H
 
-#include <cppunit/TestCase.h>
+//#include <cppunit/TestCase.h>
 #include "DateTime.h"
 #include "Adresse.h"
 #include "Koordinate.h"
