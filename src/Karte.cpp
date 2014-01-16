@@ -96,8 +96,8 @@ int Karte::abstandZwischenZweiPunkten(Koordinate* koordinate1, Koordinate* koord
 
 int Karte::kleinsterWeg(int startknoten, int zielknoten, int max) {
     vector<int>Q = vector<int>();
-    int abstand[max];
-    int vorgaenger[max];
+    int abstand[13];
+    int vorgaenger[13];
     int u = 0;
 
     for (unsigned int i = 0; i < graph.size(); i++) {
