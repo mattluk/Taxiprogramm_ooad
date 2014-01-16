@@ -3,20 +3,20 @@
 
 #include "Koordinate.h"
 //
-Koordinate::Koordinate(double x, double y)
+Koordinate::Koordinate(int x, int y)
 {
     this->x = x;
     this->y = y;
 }
 
 //
-double Koordinate::getY()
+int Koordinate::getY()
 {
     return this->y;
 }
 
 //
-double Koordinate::getX()
+int Koordinate::getX()
 {
     return this->x;
 }

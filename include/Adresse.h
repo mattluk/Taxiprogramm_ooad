@@ -36,7 +36,7 @@ public:
 	//
     void setStrasse(string strasse);
 
-    bool operator==(Adresse* adresse);
+    bool isEqual(Adresse* adresse);
 	
 private:
 	//

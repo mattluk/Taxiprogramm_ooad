@@ -13,15 +13,14 @@ Adresse::Adresse(string strasse, string hausnummer, int plz, string stadt, Koord
 }
 
 //
-Koordinate* Adresse::getKoordinate()
-{
-    return this->koordinate;
-}
-
-//
 string Adresse::getStadt()
 {
     return this->stadt;
+}
+
+//
+Koordinate* Adresse::getKoordinate() {
+    return this->koordinate;
 }
 
 //
@@ -66,13 +65,7 @@ void Adresse::setHausnummer(string hausnummer)
 	this->hausnummer=hausnummer;
 }
 
-//
-void Adresse::setKoordinate(Koordinate* koordinate)
-{
-	this->koordinate=koordinate;
-}
-
-bool Adresse::operator ==(Adresse* adresse) {
+bool Adresse::isEqual(Adresse* adresse) {
     if (this->hausnummer != adresse->hausnummer)
         return false;
 
@@ -83,9 +76,6 @@ bool Adresse::operator ==(Adresse* adresse) {
         return false;
 
     if (this->strasse != adresse->getStrasse())
-        return false;
-
-    if (this->koordinate != adresse->getKoordinate())
         return false;
 
     return true;

@@ -23,8 +23,8 @@ void Hauptmenue::taxiAuftragErstellen()
     string stadt;
     Adresse* abholpunkt;
     Koordinate* koordinate;
-    double xKoordinate;
-    double yKoordinate;
+    int xKoordinate;
+    int yKoordinate;
 
     cout<<"Bitte geben Sie zuerst die Anzahl der Sitze ein."<<endl;
     cin>> sitze;

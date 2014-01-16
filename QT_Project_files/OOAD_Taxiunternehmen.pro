@@ -26,7 +26,8 @@ SOURCES += \
     ../src/Auftragssystem.cpp \
     ../src/Auftrag.cpp \
     ../src/Adresse.cpp \
-    ../src/testingclass.cpp
+    ../src/Testingclass.cpp \
+    ../src/Karte.cpp
 
 HEADERS += \
     ../include/TaxiKomSys.h \
@@ -44,5 +45,6 @@ HEADERS += \
     ../include/Auftrag.h \
     ../include/Adresse.h \
     ../include/Hauptmenue.h \
-    ../include/testingclass.h
+    ../include/Testingclass.h \
+    ../include/Karte.h
 

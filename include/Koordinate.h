@@ -9,20 +9,20 @@ class Koordinate
 	
 public:
     //
-    Koordinate(double x, double y);
+    Koordinate(int x, int y);
 	//
-	double getX();
+    int getX();
 	//
-	double getY();
+    int getY();
 
     bool operator==(Koordinate* koordinate);
 	
 private:
 	//
-	double x;
+    int x;
 	
 	//
-	double y;
+    int y;
 	
 	
 };

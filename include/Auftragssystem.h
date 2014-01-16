@@ -11,6 +11,7 @@
 #include "Status.h"
 #include "Kundendatenbank.h"
 #include "Taxidatenbank.h"
+#include "Karte.h"
 #include <string>
 #include <vector>
 
@@ -30,7 +31,7 @@ public:
 	//
     string kundeVorhanden(string vorname, string nachname, string strasse, string hausnummer);
 	//
-    void neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, string anforderungen, string fahrziel, string abholpunkt, string abholzeit);
+    void neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, string anforderungen, Adresse* fahrziel, Adresse* abholpunkt, DateTime* abholzeit);
 	//
     int neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email);
 	
@@ -49,8 +50,9 @@ private:
 	
 	//
 	Kundendatenbank kundendatenbank;
-	
-	
+
+    //
+    Karte* karte;
 };
 
 #endif

@@ -5,11 +5,12 @@
 //
 Auftragssystem::Auftragssystem()
 {
-
+    this->karte = new Karte();
 }
 
 //
-void Auftragssystem::neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, string anforderungen, string fahrziel, string abholpunkt, string abholzeit)
+void Auftragssystem::neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, string anforderungen,
+                                  Adresse *fahrziel, Adresse *abholpunkt, DateTime *abholzeit)
 {
     //TODO: Neuer auftrag
 }
