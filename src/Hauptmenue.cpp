@@ -6,7 +6,13 @@
 
 Hauptmenue::Hauptmenue()
 {
-    auftragssystem = new Auftragssystem();
+    this->auftragssystem = new Auftragssystem();
+    this->auftragssystem->getTaxidatenbank()->addTaxi("Kindersitz", 7, new Koordinate(99, 99));
+    this->auftragssystem->getTaxidatenbank()->addTaxi("Tiere", 3, new Koordinate(5, 5));
+    this->auftragssystem->getTaxidatenbank()->addTaxi("", 1, new Koordinate(100, 7));
+    this->auftragssystem->getTaxidatenbank()->addTaxi("Raucher", 4, new Koordinate(67, 30));
+    this->auftragssystem->getTaxidatenbank()->addTaxi("grosser Kofferraum", 5, new Koordinate(80, 52));
+    this->auftragssystem->getTaxidatenbank()->addTaxi("Fahrrad", 4, new Koordinate(40, 80));
 }
 
 void Hauptmenue::taxiAuftragErstellen()

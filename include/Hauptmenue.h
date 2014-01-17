@@ -25,7 +25,6 @@ private:
 	//
     Auftragssystem* auftragssystem;
 	
-	
 };
 
 #endif

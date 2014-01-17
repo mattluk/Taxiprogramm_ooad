@@ -79,7 +79,7 @@ void TaxiprogrammTestTest::testGibPassendeTaxis() {
                                                       new Adresse("", "", 0, "", new Koordinate(70, 30)));
 
     //ist das richtig?
-    QVERIFY(taxi->getId() == 0);
+    QVERIFY(taxi->getId() == 3);
 }
 
 QTEST_APPLESS_MAIN(TaxiprogrammTestTest)
