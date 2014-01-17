@@ -39,13 +39,25 @@ Taxi* Auftragssystem::gibPassendesTaxi(int sitze, DateTime* startZeit, DateTime*
     }
 
     Taxi* currentTaxi;
-    Taxi* currentMinTaxi = freieTaxis.at(0);
+    Taxi* currentMinTaxi;
+    bool hasTaxi = false;
+    for (unsigned int i = 0; i < freieTaxis.size(); i++) {
+        currentMinTaxi = freieTaxis.at(i);
+        if (currentMinTaxi->getSitze() >= sitze) {
+            hasTaxi = true;
+            break;
+        }
+    }
+    if (!hasTaxi) {
+        return NULL;
+    }
     int min = this->karte->getEntfernung(abholpunkt->getKoordinate(), currentMinTaxi->getStandort());
     for (unsigned int i = 0; i < freieTaxis.size(); i++) {
         currentTaxi = freieTaxis.at(i);
         if (currentTaxi->getSitze() >= sitze) {
-            if (min > this->karte->getEntfernung(abholpunkt->getKoordinate(), currentTaxi->getStandort())) {
-                min = this->karte->getEntfernung(abholpunkt->getKoordinate(), currentTaxi->getStandort());
+            int vergleich = this->karte->getEntfernung(abholpunkt->getKoordinate(), currentTaxi->getStandort());
+            if (min > vergleich) {
+                min = vergleich;
                 currentMinTaxi = currentTaxi;
             }
         }

@@ -90,35 +90,35 @@ bool DateTime::isEqual(DateTime* dateTime) {
 
 //
 bool DateTime::isAfter(DateTime *dateTime) {
-    if (this->jahr < dateTime->getJahr())
-        return false;
+    if (this->jahr > dateTime->getJahr())
+        return true;
     else if (this->jahr < dateTime->getJahr())
-        return true;
-
-    if (this->monat < dateTime->getMonat())
         return false;
+
+    if (this->monat > dateTime->getMonat())
+        return true;
     else if (this->monat < dateTime->getMonat())
-        return true;
-
-    if (this->tag < dateTime->getTag())
         return false;
+
+    if (this->tag > dateTime->getTag())
+        return true;
     else if (this->tag < dateTime->getTag())
-        return true;
-
-    if (this->stunde < dateTime->getStunde())
         return false;
+
+    if (this->stunde > dateTime->getStunde())
+        return true;
     else if (this->stunde < dateTime->getStunde())
-        return true;
-
-    if (this->minuten < dateTime->getMinuten())
         return false;
+
+    if (this->minuten > dateTime->getMinuten())
+        return true;
     else if (this->minuten < dateTime->getMinuten())
-        return true;
-
-    if (this->sekunden < dateTime->getSekunden())
         return false;
-    else if (this->sekunden < dateTime->getSekunden())
+
+    if (this->sekunden > dateTime->getSekunden())
         return true;
+    else if (this->sekunden < dateTime->getSekunden())
+        return false;
 
     return false;
 }

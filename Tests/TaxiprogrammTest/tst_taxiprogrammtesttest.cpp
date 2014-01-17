@@ -30,12 +30,15 @@ TaxiprogrammTestTest::TaxiprogrammTestTest()
 
 void TaxiprogrammTestTest::testDatum() {
     DateTime* dateTime1 = new DateTime("23.05.2013", "09:03:01");
+    DateTime* dateTime2 = new DateTime("23.05.2013", "10:01:01");
     string compare1 = dateTime1->dateToString();
     string compare2 = dateTime1->timeToString();
     QVERIFY(compare1 == "23.05.2013");
     QVERIFY(compare2 == "09:03:01");
-    QVERIFY(compare1 == compare1);
-    QVERIFY(compare1 != compare2);
+    QVERIFY(dateTime1->isEqual(dateTime1));
+    QVERIFY(!(dateTime1->isEqual(new DateTime("23.05.2013", "09:03:02"))));
+    QVERIFY(dateTime2->isAfter(dateTime1));
+    QVERIFY(dateTime1->isBefore(dateTime2));
 }
 
 void TaxiprogrammTestTest::testAdresse() {
@@ -49,7 +52,7 @@ void TaxiprogrammTestTest::testKarte() {
     Karte* karte = new Karte();
     Adresse* adresse1 = new Adresse("", "", 0, "", new Koordinate(97, 4));
     Adresse* adresse2 = new Adresse("", "", 0, "", new Koordinate(4, 4));
-    cout << karte->getEntfernung(adresse1, adresse2) << endl;
+    QVERIFY(karte->getEntfernung(adresse1, adresse2) == 201);
 }
 
 void TaxiprogrammTestTest::testGibPassendeTaxis() {
@@ -63,6 +66,8 @@ void TaxiprogrammTestTest::testGibPassendeTaxis() {
                                                   new DateTime("16.01.2014", "20:55:30"),
                                                   new Adresse("", "", 0, "", new Koordinate(70, 30)));
 
+    QVERIFY(taxi->getId() == 2);
+
     taxi->addAuftrag(new Auftrag(new Adresse("", "", 0, "", new Koordinate(70, 30)),
                                  new DateTime("16.01.2014", "20:45:30"), "", 0,
                                  new DateTime("16.01.2014", "20:47:00"), 0,
@@ -72,7 +77,9 @@ void TaxiprogrammTestTest::testGibPassendeTaxis() {
                                                       new DateTime("16.01.2014", "20:46:30"),
                                                       new DateTime("16.01.2014", "20:55:30"),
                                                       new Adresse("", "", 0, "", new Koordinate(70, 30)));
-    int test = 0;
+
+    //ist das richtig?
+    QVERIFY(taxi->getId() == 0);
 }
 
 QTEST_APPLESS_MAIN(TaxiprogrammTestTest)
