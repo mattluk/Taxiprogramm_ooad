@@ -29,12 +29,10 @@ void Hauptmenue::taxiAuftragErstellen()
 
     cout<<"Bitte geben Sie zuerst die Anzahl der Sitze ein!(max 7 Sitze)"<<endl;
     cin>> sitze;
-    if (sitze<=7)
-    {
-    }
-    else
+    if (sitze>7)
     {
         cout<<"Ihre Anzahl der Sitze war zu Hoch bitte versuchen sie es erneut!"<<endl;
+        return ;
     }
     cout<<"Geben Sie Bitte jetzt ihr Datum ein (bsp. dd:mm:yyyy),";
     cout<<" im Anschluss noch die Uhrzeit (bsp. hh:mm:ss)."<<endl;
