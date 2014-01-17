@@ -13,7 +13,6 @@ Kunde::Kunde(Adresse *adresse, string email, int handy, string nachname, int tel
     this->telefonnummer = telefonnummer;
     this->vorname = vorname;
 }
-
 //
 int Kunde::getId()
 {
@@ -90,6 +89,11 @@ void Kunde::setEmail(string email)
 void Kunde::setAdresse(Adresse* adresse)
 {
 	this->adresse=adresse;
+}
+
+bool isEqual(Kunde* kunde)
+{
+    return false;
 }
 
 

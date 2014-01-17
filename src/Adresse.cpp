@@ -3,6 +3,15 @@
 
 #include "Adresse.h"
 //
+Adresse::Adresse(string strasse, string hausnummer, int plz, string stadt)
+{
+    this->strasse=strasse;
+    this->hausnummer=hausnummer;
+    this->plz=plz;
+    this->stadt=stadt;
+    this->koordinate=NULL;
+}
+//
 Adresse::Adresse(string strasse, string hausnummer, int plz, string stadt, Koordinate* koordinate)
 {
     this->strasse = strasse;

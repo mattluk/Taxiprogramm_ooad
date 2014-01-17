@@ -46,61 +46,102 @@ void Hauptmenue::taxiAuftragErstellen()
     cin>> time2;
 
     if (  date1==date2 || time1==time2             ||
-         (atoi(date1.substr(0, 2).c_str()) >=32    ||
-          atoi(date1.substr(0, 2).c_str())< 0      ||
-          atoi(date1.substr(3, 2).c_str())>=13     ||
-          atoi(date1.substr(3, 2).c_str())<=0      ||
-          atoi(date2.substr(0, 2).c_str()) >=32    ||
-          atoi(date2.substr(0, 2).c_str())< 0      ||
-          atoi(date2.substr(3, 2).c_str())>=13     ||
-          atoi(date2.substr(3, 2).c_str())<=0)     ||
-          atoi(time1.substr(0, 2).c_str())>=25     ||
-          atoi(time1.substr(0, 2).c_str())<0       ||
-          atoi(time1.substr(3, 2).c_str())>=60     ||
-          atoi(time1.substr(3, 2).c_str())<0       ||
-          atoi(time1.substr(6, 2).c_str())>=60     ||
-          atoi(time1.substr(6, 2).c_str())<0       ||
-          atoi(time2.substr(0, 2).c_str())>=25     ||
-          atoi(time2.substr(0, 2).c_str())<0       ||
-          atoi(time2.substr(3, 2).c_str())>=60     ||
-          atoi(time2.substr(3, 2).c_str())<0       ||
-          atoi(time2.substr(6, 2).c_str())>=60     ||
-          atoi(time2.substr(6, 2).c_str())<0)
+          (atoi(date1.substr(0, 2).c_str()) >=32    ||
+           atoi(date1.substr(0, 2).c_str())< 0      ||
+           atoi(date1.substr(3, 2).c_str())>=13     ||
+           atoi(date1.substr(3, 2).c_str())<=0      ||
+           atoi(date2.substr(0, 2).c_str()) >=32    ||
+           atoi(date2.substr(0, 2).c_str())< 0      ||
+           atoi(date2.substr(3, 2).c_str())>=13     ||
+           atoi(date2.substr(3, 2).c_str())<=0)     ||
+           atoi(time1.substr(0, 2).c_str())>=25     ||
+           atoi(time1.substr(0, 2).c_str())<0       ||
+           atoi(time1.substr(3, 2).c_str())>=60     ||
+           atoi(time1.substr(3, 2).c_str())<0       ||
+           atoi(time1.substr(6, 2).c_str())>=60     ||
+           atoi(time1.substr(6, 2).c_str())<0       ||
+           atoi(time2.substr(0, 2).c_str())>=25     ||
+           atoi(time2.substr(0, 2).c_str())<0       ||
+           atoi(time2.substr(3, 2).c_str())>=60     ||
+           atoi(time2.substr(3, 2).c_str())<0       ||
+           atoi(time2.substr(6, 2).c_str())>=60     ||
+           atoi(time2.substr(6, 2).c_str())<0)
 
     {
         cout<<endl;
-        cout<<"Sie haben eine falsche eingabe getaetigt, bitte versuchen sie es erneut!"<<endl<<endl;
+        cout<<"Sie haben eine falsche Eingabe getaetigt, bitte versuchen sie es erneut!"<<endl<<endl;
     }
     else
     {
         startZeit = new DateTime (date1, time1);
         endZeit = new DateTime (date2,time2);
-
-    }
-
-    cout<<" Nun geben Sie bitte noch den Abholpunkt (bsp. strasse,hausnummer,plz,stadt,xKoordinate, yKoordinate ) "<<endl;
-    cin>> strasse;
-    cin>> hausnummer;
-    cin>> plz;
-    cin>> stadt;
-    for(int i=0; i<stadt.length(); i++)
-    {
-        if(stadt[i] >= '0' && stadt[i] <= '9')
+        cout<<" Nun geben Sie bitte noch den Abholpunkt (bsp. strasse,hausnummer,plz,stadt,xKoordinate, yKoordinate ) "<<endl;
+        cin>> strasse;
+        cin>> hausnummer;
+        cin>> plz;
+        cin>> stadt;
+        for(int i=0; i<stadt.length(); i++)
         {
-            cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer die Stadt eingesetzt.Versuchen Sie es erneut!"<<endl;
+            if(stadt[i] >= '0' && stadt[i] <= '9')
+            {
+                cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer die Stadt eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
+            }
         }
     }
 }
+void Hauptmenue::kundenErstellung()
+{
+    string email;
+    int handy;
+    string nachname;
+    int telefonnummer;
+    string vorname;
+    Adresse* adresse;
+    string strasse;
+    string hausnummer;
+    int plz;
+    string stadt;
+    cout<<"Geben Sie bitte ihre folgende Daten zu Ihrer Person an!"<<endl<<endl;
+    cout<<"Nachnamen"<<endl;
+    cin>>nachname;
+    for(int i=0; i<nachname.length(); i++)
+    {
+        if(nachname[i] >= '0' && nachname[i] <= '9')
+        {
+            cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer den Nachnamen eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
+        }
+    }
+    cout<<"Vorname"<<endl;
+    cin>>vorname;
+    for(int i=0; i<vorname.length(); i++)
+    {
+        if(vorname[i] >= '0' && vorname[i] <= '9')
+        {
+            cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer den Vornamen eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
+        }
+    }
+    cout<<"Adresse(strasse,hausnummer,plz,stadt)"<<endl;
+    cin>>strasse;
+    cin>>hausnummer;
+    cin>>plz;
+    cin>>stadt;
+    adresse= new Adresse (strasse,hausnummer,plz,stadt);
+    cout<<"Email-Adresse"<<endl;
+    cin>> email;
+    cout<<"Telefonnummer"<<endl;
+    cin>>telefonnummer;
+    cout<<"Handynummer"<<endl;
+    cin>>handy;
 
+    Kunde kunde (adresse,email, handy, nachname, telefonnummer, vorname);
+}
 int Hauptmenue::starten()
 {
     int eingabe=-1;
-
     do
     {
         //Menue anzeigen
         cout << "Willkommen beim Taxiunternehmen, bitte geben Sie die fuer Sie gewuenschte Zahl ein" << endl;
-
         cout << "Menue" <<endl<<endl;
         cout << "1. Liste der Taxiauftraege anzeigen"<<endl;
         cout << "2. Freies Taxi ermitteln"<<endl;
@@ -132,9 +173,3 @@ int Hauptmenue::starten()
 
     return 0;
 }
-
-
-
-
-
-

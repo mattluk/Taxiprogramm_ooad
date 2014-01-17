@@ -13,9 +13,10 @@ class Kunde
 {
 	
 public:
+    Kunde();
     //
     Kunde(Adresse* adresse, string email, int handy, string nachname, int telefonnummer, string vorname);
-	//
+    //
     Adresse* getAdresse();
 	//
     string getEmail();
@@ -41,6 +42,8 @@ public:
 	void setTelefonnummer(int telefonnummer);
 	//
     void setVorname(string vorname);
+
+    bool isEqual(Kunde* kunde);
 	
 private:
 	//

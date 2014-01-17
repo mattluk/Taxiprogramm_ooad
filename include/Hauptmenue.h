@@ -6,6 +6,7 @@
 #include "Auftragssystem.h"
 #include <iostream>
 #include <stdlib.h>
+#include <Kunde.h>
 
 using namespace std;
 //
@@ -18,6 +19,7 @@ public:
     Hauptmenue();
 	int starten();
     void taxiAuftragErstellen();
+    void kundenErstellung();
 	
 private:
 	//

@@ -12,7 +12,7 @@ Kundendatenbank::Kundendatenbank()
 Kunde Kundendatenbank::getKunde(string vorname, string nachname, string strasse, int plz, string hausnummer)
 {
     //TODO: getKunde
-return Kunde(NULL," ", 0,"",0,"");
+      return Kunde(NULL," ", 0,"",0,"");
 }
 
 //
@@ -29,3 +29,7 @@ Kunde* Kundendatenbank::getKunde(int kundenId)
     return 0;
 }
 
+bool Kundendatenbank::istVorhanden(Kunde* kunde)
+{
+    return false;
+}

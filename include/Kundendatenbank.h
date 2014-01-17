@@ -23,6 +23,8 @@ public:
     Kunde getKunde(string vorname, string nachname, string strasse, int plz, string hausnummer);
 	//
     int neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email);
+
+    bool istVorhanden(Kunde* kunde);
 	
 private:
 	//

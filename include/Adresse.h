@@ -14,6 +14,8 @@ class Adresse
 	
 public:
     //
+    Adresse(string strasse, string hausnummer, int plz, string stadt);
+    //
     Adresse(string strasse, string hausnummer, int plz, string stadt, Koordinate* koordinate);
 	//
     string getHausnummer();
