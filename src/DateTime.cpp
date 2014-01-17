@@ -65,6 +65,10 @@ string DateTime::timeToString() {
     return (stundeS.str() + ":" + minutenS.str() + ":" + sekundenS.str());
 }
 
+string DateTime::toString() {
+    return this->dateToString() + " " + this->timeToString();
+}
+
 //
 bool DateTime::isEqual(DateTime* dateTime) {
     if (this->jahr != dateTime->getJahr())
@@ -205,9 +209,74 @@ void DateTime::setSekunden(int sekunden)
     this->sekunden = sekunden;
 }
 
-//
-void DateTime::setDate(string date)
-{
-    //TODO: string "date" aufloesen und alle attribute einzeln setzen(Ein format festlegen z.B. dd.mm.yyyy)
+DateTime* DateTime::addMinuten(int minuten) {
+    DateTime* returnDate = new DateTime(this->jahr, this->monat, this->tag, this->stunde, this->minuten, this->sekunden);
+    while (returnDate->getMinuten() != 0) {
+        returnDate->incMinuten();
+        minuten--;
+    }
+    return returnDate;
 }
 
+void DateTime::incHour() {
+    this->stunde++;
+    if (this->stunde > 23) {
+        this->incDay();
+        this->stunde = 0;
+    }
+}
+
+void DateTime::incMinuten() {
+    this->minuten++;
+    if (this->minuten > 59) {
+        this->incHour();
+        this->minuten = 0;
+    }
+}
+
+bool DateTime::istSchaltjahr() {
+    if (this->jahr % 400 == 0) {
+        return true;
+    }
+    if ((this->jahr % 4 == 0) && (this->jahr % 100 != 0)) {
+        return true;
+    }
+    return false;
+}
+
+void DateTime::incDay() {
+    this->tag++;
+    if (this->monat == 2 && istSchaltjahr()) {
+        if (tag > 29) {
+            incMonth();
+            tag = 1;
+        }
+    } else if (this->monat == 2) {
+        if (tag > 28) {
+            incMonth();
+            tag = 1;
+        }
+    } else if (this->monat == (1 | 3 | 5 | 7 | 8 | 10 | 12)) {
+        if (tag > 31) {
+            incMonth();
+            tag = 1;
+        }
+    } else {
+        if (tag > 30) {
+            incMonth();
+            tag = 1;
+        }
+    }
+}
+
+void DateTime::incMonth() {
+    this->monat++;
+    if (this->monat > 12) {
+        this->incYear();
+        this->monat = 1;
+    }
+}
+
+void DateTime::incYear() {
+    this->jahr++;
+}

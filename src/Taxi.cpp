@@ -53,7 +53,7 @@ void Taxi::addAuftrag(Auftrag* auftrag)
 //
 void Taxi::auftragAbschliessen(string daten)
 {
-    //TODO: auftrag abschliesen...
+
 }
 
 //

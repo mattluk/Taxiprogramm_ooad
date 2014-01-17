@@ -20,14 +20,89 @@ Taxidatenbank* Auftragssystem::getTaxidatenbank() {
 void Auftragssystem::neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, string anforderungen,
                                   Adresse *fahrziel, Adresse *abholpunkt, DateTime *abholzeit)
 {
-    //TODO: Neuer auftrag
+    Kunde* kunde = this->kundendatenbank->getKunde(kundenId);
+    Taxi* taxi = this->taxidatenbank->getTaxi(taxiId);
+    DateTime* berechneteEndzeit;
+
+    int wegLaenge = this->karte->getEntfernung(abholpunkt, fahrziel);
+    int berechneterFahrpreis = (wegLaenge * 100) + 2.50;
+    berechneteEndzeit = abholzeit->addMinuten( (wegLaenge / 1000) );
+
+    Auftrag* auftrag = new Auftrag(abholpunkt, abholzeit, anforderungen, anzahlPersonen, berechneteEndzeit, berechneterFahrpreis, 0, fahrziel, kunde, taxi, NULL, this->auftragIdIndex++);
+
+    taxi->addAuftrag(auftrag);
+    this->auftraege.push_back(auftrag);
 }
 
 //
 string Auftragssystem::alleAuftraegeToString()
 {
-    //TODO: Auftrage in ein string packen und zurueck geben
-    return "";
+    stringstream ss;
+    string returnString;
+    Auftrag* currentAuftrag;
+    string id;
+    string kundenId;
+    string vorname;
+    string nachname;
+    string abholzeit;
+    string berechneteEndzeit;
+    string abholpunkt;
+    string ziel;
+    string anforderungen;
+    string taxiId;
+    string anzahlPersonen;
+    string berechneterFahrpreis;
+
+    returnString = "AUFTRAEGE\n";
+    returnString += "-------------------------------------\n\n";
+
+    for (unsigned int i = 0; i < this->auftraege.size(); i++) {
+        currentAuftrag = this->auftraege.at(i);
+
+        ss << currentAuftrag->getId();
+        ss >> id;
+
+        ss << currentAuftrag->getKunde()->getId();
+        ss >> kundenId;
+
+        vorname = currentAuftrag->getKunde()->getVorname();
+        nachname = currentAuftrag->getKunde()->getNachname();
+
+        abholzeit = currentAuftrag->getAbholzeit()->toString();
+
+        berechneteEndzeit = currentAuftrag->getBerechneteEndzeit()->toString();
+
+        abholpunkt = currentAuftrag->getAbholpunkt()->getKoordinate()->toString();
+
+        ziel = currentAuftrag->getFahrziel()->getKoordinate()->toString();
+
+        anforderungen = currentAuftrag->getAnforderungen();
+
+        ss << currentAuftrag->getTaxi()->getId();
+        ss >> taxiId;
+
+        ss << currentAuftrag->getAnzahlPersonen();
+        ss >> anzahlPersonen;
+
+        ss << currentAuftrag->getBerechneterFahrpreis();
+        ss >> berechneterFahrpreis;
+
+
+        returnString += "ID: " + id + "\n";
+        returnString += "ID Kunde: " + kundenId + "\n";
+        returnString += "Vorname: " + vorname + "\n";
+        returnString += "Nachname: "+ nachname + "\n";
+        returnString += "Abholzeitpunkt: " + abholzeit + "\n";
+        returnString += "Berechneter Ankunftszeitpunkt: " + berechneteEndzeit + "\n";
+        returnString += "Abholpunkt: " + abholpunkt + "\n";
+        returnString += "Ziel: " + ziel + "\n";
+        returnString += "Anforderungen: " + anforderungen + "\n";
+        returnString += "ID Taxi: " + taxiId + "\n";
+        returnString += "Personenanzahl: " + anzahlPersonen + "\n";
+        returnString += "Berechneter Fahrpreis: " + berechneterFahrpreis + "\n";
+        returnString += "\n\n\n";
+    }
+    return returnString;
 }
 
 //
@@ -77,7 +152,6 @@ vector<Taxi*> Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, D
         counter++;
     }
 
-
     return returnTaxis;
 }
 
@@ -95,3 +169,4 @@ int Auftragssystem::neuerKunde(Adresse* adresse, string vorname, string nachname
     return 0;
 }
 
+int Auftragssystem::auftragIdIndex = 0;

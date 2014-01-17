@@ -3,6 +3,11 @@
 #ifndef KOORDINATE_H_H
 #define KOORDINATE_H_H
 
+#include <string>
+#include <sstream>
+
+using namespace std;
+
 //
 class Koordinate
 {
@@ -16,6 +21,8 @@ public:
     int getY();
 
     bool operator==(Koordinate* koordinate);
+
+    string toString();
 	
 private:
 	//

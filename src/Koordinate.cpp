@@ -30,3 +30,14 @@ bool Koordinate::operator ==(Koordinate* koordinate) {
 
     return true;
 }
+
+string Koordinate::toString() {
+    stringstream ss;
+    string x;
+    string y;
+    ss << this->x;
+    ss >> x;
+    ss << this->y;
+    ss >> y;
+    return "Koordinate: " + x + " " + y;
+}

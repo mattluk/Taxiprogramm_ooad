@@ -14,6 +14,7 @@
 #include "Karte.h"
 #include <string>
 #include <vector>
+#include <sstream>
 
 using namespace std;
 
@@ -44,9 +45,6 @@ private:
 	//
     Schichtplan* schichtplan;
 	
-    //
-	Status status;
-	
 	//
     Taxidatenbank* taxidatenbank;
 	
@@ -55,6 +53,9 @@ private:
 
     //
     Karte* karte;
+
+    //
+    static int auftragIdIndex;
 };
 
 #endif

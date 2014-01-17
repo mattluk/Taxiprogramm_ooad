@@ -22,6 +22,7 @@ private Q_SLOTS:
     void testAdresse();
     void testKarte();
     void testGibPassendeTaxis();
+    void testKlasseAuftrag();
 };
 
 TaxiprogrammTestTest::TaxiprogrammTestTest()
@@ -63,7 +64,7 @@ void TaxiprogrammTestTest::testGibPassendeTaxis() {
     auftragssystem->getTaxidatenbank()->addTaxi("4", 4, new Koordinate(4, 100));
     auftragssystem->getTaxidatenbank()->addTaxi("5", 5, new Koordinate(100, 100));
     vector<Taxi*> taxis;
-    taxis = auftragssystem->gibPassendesTaxi(2,
+    taxis = auftragssystem->gibPassendeTaxis(2,
                                                   new DateTime("16.01.2014", "20:46:30"),
                                                   new DateTime("16.01.2014", "20:55:30"),
                                                   new Adresse("", "", 0, "", new Koordinate(70, 30)));
@@ -74,12 +75,16 @@ void TaxiprogrammTestTest::testGibPassendeTaxis() {
 //                                 new DateTime("16.01.2014", "20:47:00"), 0,
 //                                 0, NULL, NULL, NULL, NULL));
 
-    taxis = auftragssystem->gibPassendesTaxi(2,
+    taxis = auftragssystem->gibPassendeTaxis(2,
                                                       new DateTime("16.01.2014", "20:46:30"),
                                                       new DateTime("16.01.2014", "20:55:30"),
                                                       new Adresse("", "", 0, "", new Koordinate(70, 30)));
 
     int test = 0;
+}
+
+void TaxiprogrammTestTest::testKlasseAuftrag() {
+
 }
 
 QTEST_APPLESS_MAIN(TaxiprogrammTestTest)

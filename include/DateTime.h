@@ -25,6 +25,8 @@ public:
     //
     string timeToString();
     //
+    string toString();
+    //
 	int getJahr();
 	//
 	int getMinuten();
@@ -35,9 +37,7 @@ public:
 	//
 	int getStunde();
 	//
-	int getTag();
-	//
-    void setDate(string date);
+    int getTag();
 	//
 	void setJahr(int jahr);
 	//
@@ -56,6 +56,20 @@ public:
     bool isAfter(DateTime* dateTime);
     //
     bool isBefore(DateTime* dateTime);
+    //
+    DateTime* addMinuten(int minuten);
+    //
+    void incDay();
+    //
+    void incMonth();
+    //
+    void incYear();
+    //
+    void incHour();
+    //
+    void incMinuten();
+    //
+    bool istSchaltjahr();
 
 private:
 	//

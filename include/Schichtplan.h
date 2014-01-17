@@ -22,9 +22,6 @@ public:
 	
 private:
 	//
-    vector<Taxi*> belegteTaxis;
-	
-	//
     Taxidatenbank* taxidatenbank;
 
     //
