@@ -28,15 +28,17 @@ public:
 	//
     string alleAuftraegeToString();
 	//
-    vector<Taxi *> gibPassendeTaxis(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt);
+    vector<Taxi *> gibPassendeTaxis(int sitze, DateTime* startZeit, Adresse* abholpunkt, Adresse *ziel);
 	//
-    string kundeVorhanden(string vorname, string nachname, string strasse, string hausnummer);
+    Kunde* kundeVorhanden(string vorname, string nachname, string strasse, int plz, string hausnummer);
 	//
     void neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, string anforderungen, Adresse* fahrziel, Adresse* abholpunkt, DateTime* abholzeit);
 	//
-    int neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email);
+    void neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email);
     //
     Taxidatenbank* getTaxidatenbank();
+    //
+    Kundendatenbank* getKundendatenbank();
 	
 private:
 	//

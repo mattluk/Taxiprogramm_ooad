@@ -37,7 +37,8 @@ string Koordinate::toString() {
     string y;
     ss << this->x;
     ss >> x;
+    ss.clear();
     ss << this->y;
     ss >> y;
-    return "Koordinate: " + x + " " + y;
+    return x + ", " + y;
 }

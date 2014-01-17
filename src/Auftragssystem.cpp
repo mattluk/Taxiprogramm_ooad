@@ -25,13 +25,18 @@ void Auftragssystem::neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, 
     DateTime* berechneteEndzeit;
 
     int wegLaenge = this->karte->getEntfernung(abholpunkt, fahrziel);
-    int berechneterFahrpreis = (wegLaenge * 100) + 2.50;
-    berechneteEndzeit = abholzeit->addMinuten( (wegLaenge / 1000) );
+    int meter = wegLaenge * 1000;
+    int berechneterFahrpreis = (meter / 500) + 2.50;
+    berechneteEndzeit = abholzeit->addMinuten( (meter / 1000) );
 
     Auftrag* auftrag = new Auftrag(abholpunkt, abholzeit, anforderungen, anzahlPersonen, berechneteEndzeit, berechneterFahrpreis, 0, fahrziel, kunde, taxi, NULL, this->auftragIdIndex++);
 
     taxi->addAuftrag(auftrag);
     this->auftraege.push_back(auftrag);
+}
+
+Kundendatenbank* Auftragssystem::getKundendatenbank() {
+    return this->kundendatenbank;
 }
 
 //
@@ -59,9 +64,11 @@ string Auftragssystem::alleAuftraegeToString()
     for (unsigned int i = 0; i < this->auftraege.size(); i++) {
         currentAuftrag = this->auftraege.at(i);
 
+        ss.clear();
         ss << currentAuftrag->getId();
         ss >> id;
 
+        ss.clear();
         ss << currentAuftrag->getKunde()->getId();
         ss >> kundenId;
 
@@ -78,12 +85,15 @@ string Auftragssystem::alleAuftraegeToString()
 
         anforderungen = currentAuftrag->getAnforderungen();
 
+        ss.clear();
         ss << currentAuftrag->getTaxi()->getId();
         ss >> taxiId;
 
+        ss.clear();
         ss << currentAuftrag->getAnzahlPersonen();
         ss >> anzahlPersonen;
 
+        ss.clear();
         ss << currentAuftrag->getBerechneterFahrpreis();
         ss >> berechneterFahrpreis;
 
@@ -106,8 +116,11 @@ string Auftragssystem::alleAuftraegeToString()
 }
 
 //
-vector<Taxi*> Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt)
+vector<Taxi*> Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, Adresse* abholpunkt, Adresse* ziel)
 {
+    int wegLaenge = this->karte->getEntfernung(abholpunkt, ziel);
+    int meter = wegLaenge * 1000;
+    DateTime* endZeit = startZeit->addMinuten( (meter / 1000) + 10 );
     vector<Taxi*> freieTaxis = this->schichtplan->gibFreieTaxis(startZeit, endZeit);
     vector<Taxi*> passendeSitze = vector<Taxi*>();
     vector<Taxi*> returnTaxis = vector<Taxi*> ();
@@ -156,17 +169,15 @@ vector<Taxi*> Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, D
 }
 
 //
-string Auftragssystem::kundeVorhanden(string vorname, string nachname, string strasse, string hausnummer)
+Kunde* Auftragssystem::kundeVorhanden(string vorname, string nachname, string strasse, int plz, string hausnummer)
 {
-    //TODO: Ist der Kunde vorhanden
-    return "";
+    return this->kundendatenbank->getKunde(vorname, nachname, strasse, plz, hausnummer);
 }
 
 //
-int Auftragssystem::neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email)
+void Auftragssystem::neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email)
 {
-    //TODO: Neuen Kunden anlegen
-    return 0;
+    this->kundendatenbank->neuerKunde(adresse, vorname, nachname, telefonnummer, handy, email);
 }
 
 int Auftragssystem::auftragIdIndex = 0;
