@@ -25,6 +25,8 @@ public:
     int neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email);
 
     bool istVorhanden(Kunde* kunde);
+
+    void addKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email);
 	
 private:
 	//

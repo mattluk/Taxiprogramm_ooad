@@ -12,7 +12,7 @@ Kundendatenbank::Kundendatenbank()
 Kunde Kundendatenbank::getKunde(string vorname, string nachname, string strasse, int plz, string hausnummer)
 {
     //TODO: getKunde
-      return Kunde(NULL," ", 0,"",0,"");
+      return Kunde(NULL," ", 0,"",0,"",0);
 }
 
 //
@@ -33,3 +33,10 @@ bool Kundendatenbank::istVorhanden(Kunde* kunde)
 {
     return false;
 }
+
+void Kundendatenbank::addKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email)
+{
+    Kunde * kunde = new Kunde (adresse, email, handy, nachname, telefonnummer, vorname, idIndex++);
+    this->kunden.push_back(kunde);
+}
+int Kundendatenbank::idIndex =0;

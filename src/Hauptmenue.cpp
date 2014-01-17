@@ -91,6 +91,7 @@ void Hauptmenue::taxiAuftragErstellen()
                 cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer die Stadt eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
             }
         }
+        //gibpassende Taxis einfuegen und ueber kleines menue pruefen kunden entscheiden lassen ob taxis vorhanden sind.
     }
 }
 void Hauptmenue::kundenErstellung()
@@ -137,7 +138,6 @@ void Hauptmenue::kundenErstellung()
     cout<<"Handynummer"<<endl;
     cin>>handy;
 
-    Kunde kunde (adresse,email, handy, nachname, telefonnummer, vorname);
 }
 int Hauptmenue::starten()
 {

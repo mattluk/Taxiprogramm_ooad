@@ -15,7 +15,7 @@ class Kunde
 public:
     Kunde();
     //
-    Kunde(Adresse* adresse, string email, int handy, string nachname, int telefonnummer, string vorname);
+    Kunde(Adresse* adresse, string email, int handy, string nachname, int telefonnummer, string vorname, int id);
     //
     Adresse* getAdresse();
 	//

@@ -3,7 +3,7 @@
 
 #include "Kunde.h"
 //
-Kunde::Kunde(Adresse *adresse, string email, int handy, string nachname, int telefonnummer, string vorname)
+Kunde::Kunde(Adresse *adresse, string email, int handy, string nachname, int telefonnummer, string vorname,int id)
 {
     //TODO: id einstellen
     this->adresse = adresse;
@@ -12,6 +12,7 @@ Kunde::Kunde(Adresse *adresse, string email, int handy, string nachname, int tel
     this->nachname = nachname;
     this->telefonnummer = telefonnummer;
     this->vorname = vorname;
+    this->id=id;
 }
 //
 int Kunde::getId()
@@ -93,6 +94,13 @@ void Kunde::setAdresse(Adresse* adresse)
 
 bool isEqual(Kunde* kunde)
 {
+//    if ()
+//    {
+//    }
+//    else
+//    {
+//        return false;
+//    }
     return false;
 }
 
