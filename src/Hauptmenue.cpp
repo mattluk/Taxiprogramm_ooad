@@ -84,7 +84,7 @@ void Hauptmenue::taxiAuftragErstellen()
         cin>> hausnummer;
         cin>> plz;
         cin>> stadt;
-        for(int i=0; i<stadt.length(); i++)
+        for(unsigned int i=0; i<stadt.length(); i++)
         {
             if(stadt[i] >= '0' && stadt[i] <= '9')
             {
@@ -109,7 +109,7 @@ void Hauptmenue::kundenErstellung()
     cout<<"Geben Sie bitte ihre folgende Daten zu Ihrer Person an!"<<endl<<endl;
     cout<<"Nachnamen"<<endl;
     cin>>nachname;
-    for(int i=0; i<nachname.length(); i++)
+    for(unsigned int i=0; i<nachname.length(); i++)
     {
         if(nachname[i] >= '0' && nachname[i] <= '9')
         {
@@ -118,7 +118,7 @@ void Hauptmenue::kundenErstellung()
     }
     cout<<"Vorname"<<endl;
     cin>>vorname;
-    for(int i=0; i<vorname.length(); i++)
+    for(unsigned int i=0; i<vorname.length(); i++)
     {
         if(vorname[i] >= '0' && vorname[i] <= '9')
         {

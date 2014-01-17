@@ -38,6 +38,8 @@ public:
     void addAuftrag(Auftrag* auftrag);
     //
     vector<Auftrag*>getAuftraege();
+    //
+    bool isEqual(Taxi* taxi);
 	
 private:
 	//

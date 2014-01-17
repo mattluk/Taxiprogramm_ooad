@@ -13,6 +13,14 @@ Taxi::Taxi(string extras, int sitze, Koordinate *standort, int id)
 }
 
 //
+bool Taxi::isEqual(Taxi *taxi) {
+    if (this->id != taxi->getId())
+        return false;
+
+    return true;
+}
+
+//
 int Taxi::getSitze()
 {
     return this->sitze;

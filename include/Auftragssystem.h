@@ -27,7 +27,7 @@ public:
 	//
     string alleAuftraegeToString();
 	//
-    Taxi* gibPassendesTaxi(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt);
+    vector<Taxi *> gibPassendeTaxis(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt);
 	//
     string kundeVorhanden(string vorname, string nachname, string strasse, string hausnummer);
 	//

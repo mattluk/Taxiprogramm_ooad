@@ -31,39 +31,54 @@ string Auftragssystem::alleAuftraegeToString()
 }
 
 //
-Taxi* Auftragssystem::gibPassendesTaxi(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt)
+vector<Taxi*> Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, DateTime* endZeit, Adresse* abholpunkt)
 {
     vector<Taxi*> freieTaxis = this->schichtplan->gibFreieTaxis(startZeit, endZeit);
-    if (freieTaxis.size() == 0) {
-        return NULL;
-    }
-
+    vector<Taxi*> passendeSitze = vector<Taxi*>();
+    vector<Taxi*> returnTaxis = vector<Taxi*> ();
     Taxi* currentTaxi;
     Taxi* currentMinTaxi;
-    bool hasTaxi = false;
-    for (unsigned int i = 0; i < freieTaxis.size(); i++) {
-        currentMinTaxi = freieTaxis.at(i);
-        if (currentMinTaxi->getSitze() >= sitze) {
-            hasTaxi = true;
-            break;
-        }
+    int min;
+    int counter = 0;
+    int currentI = 0;
+
+    if (freieTaxis.size() == 0) {
+        return vector<Taxi*>();
     }
-    if (!hasTaxi) {
-        return NULL;
-    }
-    int min = this->karte->getEntfernung(abholpunkt->getKoordinate(), currentMinTaxi->getStandort());
+
     for (unsigned int i = 0; i < freieTaxis.size(); i++) {
         currentTaxi = freieTaxis.at(i);
         if (currentTaxi->getSitze() >= sitze) {
-            int vergleich = this->karte->getEntfernung(abholpunkt->getKoordinate(), currentTaxi->getStandort());
-            if (min > vergleich) {
-                min = vergleich;
-                currentMinTaxi = currentTaxi;
-            }
+            passendeSitze.push_back(currentTaxi);
         }
     }
 
-    return currentMinTaxi;
+    if (passendeSitze.size() == 0) {
+        return vector<Taxi*>();
+    }
+
+    while (!(passendeSitze.empty()) && counter != 3) {
+        currentMinTaxi = passendeSitze.at(0);
+        min = this->karte->getEntfernung(abholpunkt->getKoordinate(), currentMinTaxi->getStandort());
+        currentI = 0;
+        for (unsigned int i = 0; i < passendeSitze.size(); i++) {
+            currentTaxi = passendeSitze.at(i);
+            if (currentTaxi->getSitze() >= sitze) {
+                int vergleich = this->karte->getEntfernung(abholpunkt->getKoordinate(), currentTaxi->getStandort());
+                if (min > vergleich) {
+                    min = vergleich;
+                    currentMinTaxi = currentTaxi;
+                    currentI = i;
+                }
+            }
+        }
+        returnTaxis.push_back(currentMinTaxi);
+        passendeSitze.erase(passendeSitze.begin() + currentI);
+        counter++;
+    }
+
+
+    return returnTaxis;
 }
 
 //
