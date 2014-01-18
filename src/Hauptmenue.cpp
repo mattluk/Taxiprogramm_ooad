@@ -127,13 +127,39 @@ void Hauptmenue::neuerKunde()
 
 void Hauptmenue::freieTaxis()
 {
-    Auftragssystem auftragssystem;
-    auftragssystem.gibPassendeTaxis(sitze,startZeit,abholpunkt,ziel);
-    //ich will in freie Taxis eigendlich alle freien taxis ausgeben lassen nur weiß ich nicht genau wie ich am besten das Auftragssystem einschließen kann.
-    //gibfreietaxis
-    //->Menue extras
-    //kundenid rausholen,
-    //return taxi id
+    int sitze;
+    string startDatum;
+    string startUhrzeit;
+    string startStrasse;
+    string startHausnummer;
+    int startPlz;
+    string startStadt;
+    int startKoordinateX;
+    int startKoordinateY;
+    string endStrasse;
+    string endHausnummer;
+    int endPlz;
+    string endStadt;
+    int endKoordinateX;
+    int endKoordinateY;
+
+
+
+    //Alle Daten hier einlesen
+
+
+
+    //freieTaxis werden ermittelt
+    vector<Taxi*> freieTaxis = this->auftragssystem->gibPassendeTaxis(sitze, new DateTime(startDatum, startUhrzeit),
+                                                                      new Adresse(startStrasse, startHausnummer, startPlz, startStadt, new Koordinate(startKoordinateX, startKoordinateY)),
+                                                                      new Adresse(endStrasse, endHausnummer, endPlz, endStadt, new Koordinate(endKoordinateX, endKoordinateY)));
+
+
+
+
+    //Alle taxis von "freieTaxis" nacheinander ausgeben
+    //FERTIG
+    //(kein return)
 }
 
 int Hauptmenue::starten()
