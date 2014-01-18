@@ -21,15 +21,13 @@ public:
     Hauptmenue();
 	int starten();
     void taxiAuftragErstellen();
-    void kundenErstellung();
+    void kundePruefen();
     void neuerKunde();
     void freieTaxis();
-    void TaxisBestimmen();
 	
 private:
 	//
     Auftragssystem* auftragssystem;
-	
 };
 
 #endif

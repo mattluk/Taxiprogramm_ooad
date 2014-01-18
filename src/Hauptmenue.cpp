@@ -19,19 +19,13 @@ void Hauptmenue::taxiAuftragErstellen()
 {
     int sitze;
     DateTime* startZeit;
-    DateTime* endZeit;
     string date1;
     string time1;
-    string date2;
-    string time2;
     string strasse;
     string hausnummer;
     int plz;
     string stadt;
-    //    Adresse* abholpunkt;
-    //    Koordinate* koordinate;
-    //    double xKoordinate;
-    //    double yKoordinate;
+    Adresse* abholpunkt;
 
     cout<<"Bitte geben Sie zuerst die Anzahl der Sitze ein!(max 7 Sitze)"<<endl;
     cin>> sitze;
@@ -44,32 +38,16 @@ void Hauptmenue::taxiAuftragErstellen()
     cout<<" im Anschluss noch die Uhrzeit (bsp. hh:mm:ss)."<<endl;
     cin>> date1;
     cin>> time1;
-    cout<<"Geben Sie bitte jetzt die Datum ein (bsp. dd:mm:yyyy),";
-    cout<<" dann noch die Uhrzeit (bsp. hh:mm:ss)."<<endl;
-    cin>> date2;
-    cin>> time2;
-
-    if (  date1==date2 || time1==time2             ||
-          (atoi(date1.substr(0, 2).c_str()) >=32    ||
+    if (  (atoi(date1.substr(0, 2).c_str()) >=32    ||
            atoi(date1.substr(0, 2).c_str())< 0      ||
            atoi(date1.substr(3, 2).c_str())>=13     ||
            atoi(date1.substr(3, 2).c_str())<=0      ||
-           atoi(date2.substr(0, 2).c_str()) >=32    ||
-           atoi(date2.substr(0, 2).c_str())< 0      ||
-           atoi(date2.substr(3, 2).c_str())>=13     ||
-           atoi(date2.substr(3, 2).c_str())<=0)     ||
            atoi(time1.substr(0, 2).c_str())>=25     ||
            atoi(time1.substr(0, 2).c_str())<0       ||
            atoi(time1.substr(3, 2).c_str())>=60     ||
            atoi(time1.substr(3, 2).c_str())<0       ||
            atoi(time1.substr(6, 2).c_str())>=60     ||
-           atoi(time1.substr(6, 2).c_str())<0       ||
-           atoi(time2.substr(0, 2).c_str())>=25     ||
-           atoi(time2.substr(0, 2).c_str())<0       ||
-           atoi(time2.substr(3, 2).c_str())>=60     ||
-           atoi(time2.substr(3, 2).c_str())<0       ||
-           atoi(time2.substr(6, 2).c_str())>=60     ||
-           atoi(time2.substr(6, 2).c_str())<0)
+           atoi(time1.substr(6, 2).c_str())<0 ))
 
     {
         cout<<endl;
@@ -78,7 +56,6 @@ void Hauptmenue::taxiAuftragErstellen()
     else
     {
         startZeit = new DateTime (date1, time1);
-        endZeit = new DateTime (date2,time2);
         cout<<" Nun geben Sie bitte noch den Abholpunkt (bsp. strasse,hausnummer,plz,stadt) "<<endl;
         cin>> strasse;
         cin>> hausnummer;
@@ -91,38 +68,19 @@ void Hauptmenue::taxiAuftragErstellen()
                 cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer die Stadt eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
             }
         }
-        //gibpassende Taxis einfuegen und ueber kleines menue pruefen kunden entscheiden lassen ob taxis vorhanden sind.
-        kundenErstellung();
+        abholpunkt= new Adresse(strasse,hausnummer,plz,stadt);
+
     }
 }
 
-void Hauptmenue::kundenErstellung()
+void Hauptmenue::kundePruefen()
 {
-
-    int eingabe=-2;
-
-    do
-    {
-        cout << "Benuter" << endl;
-        cout << "(1):Benutzer erstellen" << endl;
-        cout << "(2):Benutzer bereits erstellt" << endl;
-        cin>>eingabe;
-        cout << endl;
-
-        switch(eingabe)
-        {
-        case 1:neuerKunde();
-               break;
-        case 2:break;
-        default: cout << "falsche eingabe";
-        }
-    }
-    while(eingabe != 2);
+    // Auftragssystem kundenvorhanden.
+   // ->wenn null neuerKunde aufrufen
 }
 
 void Hauptmenue::neuerKunde()
 {
-    int id=0;
     string email;
     int handy;
     string nachname;
@@ -133,6 +91,7 @@ void Hauptmenue::neuerKunde()
     string hausnummer;
     int plz;
     string stadt;
+
     cout<<"Geben Sie bitte ihre folgende Daten zu Ihrer Person an!"<<endl<<endl;
     cout<<"Nachnamen"<<endl;
     cin>>nachname;
@@ -164,32 +123,17 @@ void Hauptmenue::neuerKunde()
     cin>>telefonnummer;
     cout<<"Handynummer"<<endl;
     cin>>handy;
-    Kunde::Kunde(adresse, email, handy, nachname, telefonnummer, vorname, id);
-}
-
-void Hauptmenue::TaxisBestimmen()
-{
-    string extras;
-    int sitze;
-    int posX;
-    int posY;
-    Koordinate * standort;
-    int id;
-
-    cout<< "Welche Extras möchten Sie fuers Taxi hinzufuegen? (1.Kindersitz,2.Tiere,3.nichts,4.Raucher,5.grosser Kofferraum,6.Fahrrad)"<<endl;
-    cin>>extras;
-    cout<<"Geben Sie die Anzahl der Sitze an!"<<endl;
-    cin>>sitze;
-    cout<<"Geben Sie Ihren Standort ein (pos. x und pos. y"<<endl;
-    cin>>posX;
-    cin>>posY;
-    standort= new Koordinate(posX,posY);
-
-   Taxi taxi (extras,sitze,standort,id);
 }
 
 void Hauptmenue::freieTaxis()
 {
+    Auftragssystem auftragssystem;
+    auftragssystem.gibPassendeTaxis(sitze,startZeit,abholpunkt,ziel);
+    //ich will in freie Taxis eigendlich alle freien taxis ausgeben lassen nur weiß ich nicht genau wie ich am besten das Auftragssystem einschließen kann.
+    //gibfreietaxis
+    //->Menue extras
+    //kundenid rausholen,
+    //return taxi id
 }
 
 int Hauptmenue::starten()
