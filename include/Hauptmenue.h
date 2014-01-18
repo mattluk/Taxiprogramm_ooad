@@ -7,6 +7,8 @@
 #include <iostream>
 #include <stdlib.h>
 #include <Kunde.h>
+#include <Schichtplan.h>
+#include <Taxi.h>
 
 using namespace std;
 //
@@ -20,6 +22,9 @@ public:
 	int starten();
     void taxiAuftragErstellen();
     void kundenErstellung();
+    void neuerKunde();
+    void freieTaxis();
+    void TaxisBestimmen();
 	
 private:
 	//

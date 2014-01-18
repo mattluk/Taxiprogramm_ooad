@@ -79,7 +79,7 @@ void Hauptmenue::taxiAuftragErstellen()
     {
         startZeit = new DateTime (date1, time1);
         endZeit = new DateTime (date2,time2);
-        cout<<" Nun geben Sie bitte noch den Abholpunkt (bsp. strasse,hausnummer,plz,stadt,xKoordinate, yKoordinate ) "<<endl;
+        cout<<" Nun geben Sie bitte noch den Abholpunkt (bsp. strasse,hausnummer,plz,stadt) "<<endl;
         cin>> strasse;
         cin>> hausnummer;
         cin>> plz;
@@ -92,10 +92,37 @@ void Hauptmenue::taxiAuftragErstellen()
             }
         }
         //gibpassende Taxis einfuegen und ueber kleines menue pruefen kunden entscheiden lassen ob taxis vorhanden sind.
+        kundenErstellung();
     }
 }
+
 void Hauptmenue::kundenErstellung()
 {
+
+    int eingabe=-2;
+
+    do
+    {
+        cout << "Benuter" << endl;
+        cout << "(1):Benutzer erstellen" << endl;
+        cout << "(2):Benutzer bereits erstellt" << endl;
+        cin>>eingabe;
+        cout << endl;
+
+        switch(eingabe)
+        {
+        case 1:neuerKunde();
+               break;
+        case 2:break;
+        default: cout << "falsche eingabe";
+        }
+    }
+    while(eingabe != 2);
+}
+
+void Hauptmenue::neuerKunde()
+{
+    int id=0;
     string email;
     int handy;
     string nachname;
@@ -137,11 +164,38 @@ void Hauptmenue::kundenErstellung()
     cin>>telefonnummer;
     cout<<"Handynummer"<<endl;
     cin>>handy;
-
+    Kunde::Kunde(adresse, email, handy, nachname, telefonnummer, vorname, id);
 }
+
+void Hauptmenue::TaxisBestimmen()
+{
+    string extras;
+    int sitze;
+    int posX;
+    int posY;
+    Koordinate * standort;
+    int id;
+
+    cout<< "Welche Extras möchten Sie fuers Taxi hinzufuegen? (1.Kindersitz,2.Tiere,3.nichts,4.Raucher,5.grosser Kofferraum,6.Fahrrad)"<<endl;
+    cin>>extras;
+    cout<<"Geben Sie die Anzahl der Sitze an!"<<endl;
+    cin>>sitze;
+    cout<<"Geben Sie Ihren Standort ein (pos. x und pos. y"<<endl;
+    cin>>posX;
+    cin>>posY;
+    standort= new Koordinate(posX,posY);
+
+   Taxi taxi (extras,sitze,standort,id);
+}
+
+void Hauptmenue::freieTaxis()
+{
+}
+
 int Hauptmenue::starten()
 {
     int eingabe=-1;
+
     do
     {
         //Menue anzeigen
@@ -167,7 +221,7 @@ int Hauptmenue::starten()
         switch(eingabe)
         {
         case 1: ;break;
-        case 2: ;break;
+        case 2: freieTaxis();break;
         case 3: taxiAuftragErstellen();break;
         case 9: break;
 
