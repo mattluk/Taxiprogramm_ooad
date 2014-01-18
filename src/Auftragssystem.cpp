@@ -175,9 +175,9 @@ Kunde* Auftragssystem::kundeVorhanden(string vorname, string nachname, string st
 }
 
 //
-void Auftragssystem::neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email)
+Kunde* Auftragssystem::neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email)
 {
-    this->kundendatenbank->neuerKunde(adresse, vorname, nachname, telefonnummer, handy, email);
+    return this->kundendatenbank->neuerKunde(adresse, vorname, nachname, telefonnummer, handy, email);
 }
 
 int Auftragssystem::auftragIdIndex = 0;

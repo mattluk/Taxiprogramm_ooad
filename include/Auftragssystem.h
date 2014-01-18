@@ -34,7 +34,7 @@ public:
 	//
     void neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, string anforderungen, Adresse* fahrziel, Adresse* abholpunkt, DateTime* abholzeit);
 	//
-    void neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email);
+    Kunde *neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email);
     //
     Taxidatenbank* getTaxidatenbank();
     //

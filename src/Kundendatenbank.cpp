@@ -27,11 +27,11 @@ Kunde* Kundendatenbank::getKunde(string vorname, string nachname, string strasse
 }
 
 //
-int Kundendatenbank::neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email)
+Kunde* Kundendatenbank::neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email)
 {
     Kunde* kunde = new Kunde (adresse, email, handy, nachname, telefonnummer, vorname, idIndex++);
     this->kunden.push_back(kunde);
-    return 0;
+    return kunde;
 }
 
 //
