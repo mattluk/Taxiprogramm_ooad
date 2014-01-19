@@ -26,8 +26,6 @@ public:
     void freieTaxis();
 	
 private:
-	//
-    Kundendatenbank* kundendatenbank;
     //
     Auftragssystem* auftragssystem;
 };

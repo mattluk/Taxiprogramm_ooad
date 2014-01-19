@@ -69,7 +69,6 @@ void Hauptmenue::taxiAuftragErstellen()
             }
         }
         abholpunkt= new Adresse(strasse,hausnummer,plz,stadt);
-
     }
 }
 
@@ -85,7 +84,7 @@ void Hauptmenue::kundePruefen()
     string hausnummer;
     int plz;
     string stadt;
-    Kunde * kunden;
+    Kunde * kunde;
 
     cout<<"Geben Sie bitte ihre folgende Daten zu Ihrer Person an!"<<endl<<endl;
     cout<<"Nachnamen"<<endl;
@@ -95,6 +94,7 @@ void Hauptmenue::kundePruefen()
         if(nachname[i] >= '0' && nachname[i] <= '9')
         {
             cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer den Nachnamen eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
+            return;
         }
     }
     cout<<"Vorname"<<endl;
@@ -104,6 +104,7 @@ void Hauptmenue::kundePruefen()
         if(vorname[i] >= '0' && vorname[i] <= '9')
         {
             cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer den Vornamen eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
+            return;
         }
     }
     cout<<"Adresse(strasse,hausnummer,plz,stadt)"<<endl;
@@ -114,13 +115,8 @@ void Hauptmenue::kundePruefen()
     adresse= new Adresse (strasse,hausnummer,plz,stadt);
     //Id ausgeben
     //Kunde Prüfen erst dann email etc..
-    kunden = this->kundendatenbank->getKunde(vorname,nachname,strasse,plz,hausnummer);
-    if (kunden==kunden)
-    {
-        cout<<"Der Kunde existiert bereits"<<endl;
-    }
-    else
-    {
+    //kunden = this->kundendatenbank->getKunde(vorname,nachname,strasse,plz,hausnummer);
+    kunde = auftragssystem->neuerKunde(adresse,vorname,nachname,telefonnummer,handy,email);
     cout<<"Bitte legen Sie weitere Daten an!"<<endl;
     cout<<"Email-Adresse"<<endl;
     cin>> email;
@@ -128,13 +124,7 @@ void Hauptmenue::kundePruefen()
     cin>>telefonnummer;
     cout<<"Handynummer"<<endl;
     cin>>handy;
-    int id =0;
-    kunden= new Kunde(adresse,email,handy,nachname,telefonnummer,vorname,id);
-    id++;
-    cout<<id<<endl;
-    }
 }
-
 void Hauptmenue::freieTaxis()
 {
     int sitze;
