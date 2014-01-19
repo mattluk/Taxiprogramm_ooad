@@ -73,7 +73,7 @@ int Karte::getEntfernung(Koordinate *start, Koordinate *ziel) {
     int zielPunkt = naehesterPunkt(ziel);
     int x = abstandZwischenZweiPunkten(start, punktKoordinaten.at(startPunkt));
     int y = abstandZwischenZweiPunkten(ziel, punktKoordinaten.at(zielPunkt));
-    int z = kleinsterWeg(startPunkt, zielPunkt, 13);
+    int z = kleinsterWeg(startPunkt, zielPunkt);
     return x+y+z;
 }
 
@@ -82,7 +82,7 @@ int Karte::getEntfernung(Adresse *start, Adresse *ziel) {
     int zielPunkt = naehesterPunkt(ziel->getKoordinate());
     int x = abstandZwischenZweiPunkten(start->getKoordinate(), punktKoordinaten.at(startPunkt));
     int y = abstandZwischenZweiPunkten(ziel->getKoordinate(), punktKoordinaten.at(zielPunkt));
-    int z = kleinsterWeg(startPunkt, zielPunkt, 13);
+    int z = kleinsterWeg(startPunkt, zielPunkt);
     return x+y+z;
 }
 
@@ -103,7 +103,7 @@ int Karte::abstandZwischenZweiPunkten(Koordinate* koordinate1, Koordinate* koord
 }
 
 
-int Karte::kleinsterWeg(int startknoten, int zielknoten, int max) {
+int Karte::kleinsterWeg(int startknoten, int zielknoten) {
     vector<int>Q = vector<int>();
     int abstand[13];
     int vorgaenger[13];

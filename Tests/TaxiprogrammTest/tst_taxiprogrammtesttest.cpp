@@ -63,8 +63,8 @@ void TaxiprogrammTestTest::testKlasseAuftragssystem() {
     anforderungen = "Keine";
     fahrZiel = new Adresse("", "", 0, "", new Koordinate(100, 100));
 
-    vector<Taxi*> taxis = auftragssystem->gibPassendeTaxis(anzahlPersonen, startZeit, start, fahrZiel);
-    auftragssystem->neuerAuftrag(kundenId, taxis.at(0)->getId(), anzahlPersonen, anforderungen, fahrZiel, start, startZeit);
+    vector<Taxi*> taxis = auftragssystem->gibPassendeTaxis(anzahlPersonen, startZeit, start->getKoordinate(), fahrZiel->getKoordinate());
+    auftragssystem->neuerAuftrag(kundenId, taxis.at(0)->getId(), anzahlPersonen, fahrZiel, start, startZeit);
     cout << auftragssystem->alleAuftraegeToString();
 }
 
@@ -104,8 +104,8 @@ void TaxiprogrammTestTest::testGibPassendeTaxis() {
     vector<Taxi*> taxis;
     taxis = auftragssystem->gibPassendeTaxis(2,
                                              new DateTime("16.01.2014", "20:46:30"),
-                                             new Adresse("", "", 0, "", new Koordinate(70, 30)),
-                                             new Adresse("", "", 0, "", new Koordinate(20, 20)));
+                                             new Koordinate(70, 30),
+                                             new Koordinate(20, 20));
 
 
     //    taxi->addAuftrag(new Auftrag(new Adresse("", "", 0, "", new Koordinate(70, 30)),
@@ -115,8 +115,8 @@ void TaxiprogrammTestTest::testGibPassendeTaxis() {
 
     taxis = auftragssystem->gibPassendeTaxis(2,
                                              new DateTime("16.01.2014", "20:46:30"),
-                                             new Adresse("", "", 0, "", new Koordinate(70, 30)),
-                                             new Adresse("", "", 0, "", new Koordinate(30, 30)));
+                                             new Koordinate(70, 30),
+                                             new Koordinate(30, 30));
 
     int test = 0;
 }

@@ -17,116 +17,8 @@ Hauptmenue::Hauptmenue()
 
 void Hauptmenue::taxiAuftragErstellen()
 {
-    int sitze;
-    DateTime* startZeit;
-    string date1;
-    string time1;
-    string strasse;
-    string hausnummer;
-    int plz;
-    string stadt;
-    Adresse* abholpunkt;
+    this->kundePruefen();
 
-    cout<<"Bitte geben Sie zuerst die Anzahl der Sitze ein!(max 7 Sitze)"<<endl;
-    cin>> sitze;
-    if (sitze>7)
-    {
-        cout<<"Ihre Anzahl der Sitze war zu Hoch bitte versuchen sie es erneut!"<<endl;
-        return ;
-    }
-    cout<<"Geben Sie Bitte jetzt ihr Datum ein (bsp. dd:mm:yyyy),";
-    cout<<" im Anschluss noch die Uhrzeit (bsp. hh:mm:ss)."<<endl;
-    cin>> date1;
-    cin>> time1;
-    if (  (atoi(date1.substr(0, 2).c_str()) >=32    ||
-           atoi(date1.substr(0, 2).c_str())< 0      ||
-           atoi(date1.substr(3, 2).c_str())>=13     ||
-           atoi(date1.substr(3, 2).c_str())<=0      ||
-           atoi(time1.substr(0, 2).c_str())>=25     ||
-           atoi(time1.substr(0, 2).c_str())<0       ||
-           atoi(time1.substr(3, 2).c_str())>=60     ||
-           atoi(time1.substr(3, 2).c_str())<0       ||
-           atoi(time1.substr(6, 2).c_str())>=60     ||
-           atoi(time1.substr(6, 2).c_str())<0 ))
-
-    {
-        cout<<endl;
-        cout<<"Sie haben eine falsche Eingabe getaetigt, bitte versuchen sie es erneut!"<<endl<<endl;
-    }
-    else
-    {
-        startZeit = new DateTime (date1, time1);
-        cout<<" Nun geben Sie bitte noch den Abholpunkt (bsp. strasse,hausnummer,plz,stadt) "<<endl;
-        cin>> strasse;
-        cin>> hausnummer;
-        cin>> plz;
-        cin>> stadt;
-        for(unsigned int i=0; i<stadt.length(); i++)
-        {
-            if(stadt[i] >= '0' && stadt[i] <= '9')
-            {
-                cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer die Stadt eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
-            }
-        }
-        abholpunkt= new Adresse(strasse,hausnummer,plz,stadt);
-    }
-}
-
-void Hauptmenue::kundePruefen()
-{
-    string email;
-    int handy;
-    string nachname;
-    int telefonnummer;
-    string vorname;
-    Adresse* adresse;
-    string strasse;
-    string hausnummer;
-    int plz;
-    string stadt;
-    Kunde * kunde;
-
-    cout<<"Geben Sie bitte ihre folgende Daten zu Ihrer Person an!"<<endl<<endl;
-    cout<<"Nachnamen"<<endl;
-    cin>>nachname;
-    for(unsigned int i=0; i<nachname.length(); i++)
-    {
-        if(nachname[i] >= '0' && nachname[i] <= '9')
-        {
-            cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer den Nachnamen eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
-            return;
-        }
-    }
-    cout<<"Vorname"<<endl;
-    cin>>vorname;
-    for(unsigned int i=0; i<vorname.length(); i++)
-    {
-        if(vorname[i] >= '0' && vorname[i] <= '9')
-        {
-            cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer den Vornamen eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
-            return;
-        }
-    }
-    cout<<"Adresse(strasse,hausnummer,plz,stadt)"<<endl;
-    cin>>strasse;
-    cin>>hausnummer;
-    cin>>plz;
-    cin>>stadt;
-    adresse= new Adresse (strasse,hausnummer,plz,stadt);
-    //Id ausgeben
-    //Kunde Prüfen erst dann email etc..
-    //kunden = this->kundendatenbank->getKunde(vorname,nachname,strasse,plz,hausnummer);
-    kunde = auftragssystem->neuerKunde(adresse,vorname,nachname,telefonnummer,handy,email);
-    cout<<"Bitte legen Sie weitere Daten an!"<<endl;
-    cout<<"Email-Adresse"<<endl;
-    cin>> email;
-    cout<<"Telefonnummer"<<endl;
-    cin>>telefonnummer;
-    cout<<"Handynummer"<<endl;
-    cin>>handy;
-}
-void Hauptmenue::freieTaxis()
-{
     int sitze;
     string startDatum;
     string startUhrzeit;
@@ -142,8 +34,14 @@ void Hauptmenue::freieTaxis()
     string endStadt;
     int endKoordinateX;
     int endKoordinateY;
+    int kundenId;
+    int taxiId;
 
-    //Alle Daten hier einlesen
+    cout << "Geben Sie nun die Kunden ID ein" << endl;
+    cin >> kundenId;
+    cout << "Geben Sie nun die Taxi ID ein" << endl;
+    cin >> taxiId;
+
     cout<<"Geben sie bitte folgende Daten ein"<<endl;
     cout<<"Anzahl der Sitze"<<endl;
     cin>>sitze;
@@ -196,23 +94,159 @@ void Hauptmenue::freieTaxis()
         }
         cin>>endKoordinateX;
         cin>>endKoordinateY;
+
+        this->auftragssystem->neuerAuftrag(kundenId, taxiId, sitze,
+                                           new Adresse(endStrasse, endHausnummer, endPlz, endStadt, new Koordinate(endKoordinateX, endKoordinateY)),
+                                           new Adresse(startStrasse, startHausnummer, startPlz, startStadt, new Koordinate(startKoordinateX, startKoordinateY)),
+                                           new DateTime(startDatum, startUhrzeit));
+
+        cout << "Der Auftrag wurde erstellt" << endl << endl;
+
     }
 
+}
 
-    //freieTaxis werden ermittelt
-    vector<Taxi*> freieTaxis = this->auftragssystem->gibPassendeTaxis(sitze, new DateTime(startDatum, startUhrzeit),
-                                                                             new Adresse(startStrasse, startHausnummer, startPlz, startStadt, new Koordinate(startKoordinateX, startKoordinateY)),
-                                                                             new Adresse(endStrasse, endHausnummer, endPlz, endStadt, new Koordinate(endKoordinateX, endKoordinateY)));
+void Hauptmenue::kundePruefen()
+{
+    string email;
+    int handy;
+    string nachname;
+    int telefonnummer;
+    string vorname;
+    string strasse;
+    string hausnummer;
+    int plz;
+    string stadt;
+    Kunde* kunde;
+    int koordinateX;
+    int koordinateY;
 
-//    Taxi* taxi;
-//    cout<<taxi->getId();
-//    cout<<endl;
+    cout<<"Geben Sie bitte ihre folgende Daten zu Ihrer Person an!"<<endl<<endl;
+    cout<<"Nachnamen"<<endl;
+    cin>>nachname;
+    for(unsigned int i=0; i<nachname.length(); i++)
+    {
+        if(nachname[i] >= '0' && nachname[i] <= '9')
+        {
+            cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer den Nachnamen eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
+            return;
+        }
+    }
+    cout<<"Vorname"<<endl;
+    cin>>vorname;
+    for(unsigned int i=0; i<vorname.length(); i++)
+    {
+        if(vorname[i] >= '0' && vorname[i] <= '9')
+        {
+            cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer den Vornamen eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
+            return;
+        }
+    }
+    cout<<"Adresse(strasse,hausnummer,plz,stadt)"<<endl;
+    cin>>strasse;
+    cin>>hausnummer;
+    cin>>plz;
+    cin>>stadt;
+
+    //Eventuell hier noch strasse hausnummer plz und stadt pruefen
+
+    //---------------------------------------------------------------------
+
+    kunde = this->auftragssystem->kundeVorhanden(vorname, nachname, strasse, plz, hausnummer);
+    if (kunde == NULL) {
+        cout<<"Es wird ein neuer Kunde angelegt, bitte geben Sie dazu zusaetzliche Daten ein:"<<endl;
+        cout<<"Email-Adresse"<<endl;
+        cin>> email;
+        cout<<"Telefonnummer"<<endl;
+        cin>>telefonnummer;
+        cout<<"Handynummer"<<endl;
+        cin>>handy;
+        cout<<"KoordinateX und KoordinateY"<<endl;
+        cin>>koordinateX;
+        cin>>koordinateY;
+
+        //Die eingelesenen Daten hier evtl. noch pruefen
+
+        //--------------------------------------------------------------------------------------------
+
+        kunde = this->auftragssystem->neuerKunde(new Adresse(strasse, hausnummer, plz, stadt, new Koordinate(koordinateX, koordinateY)), vorname, nachname, telefonnummer, handy, email);
+    }
+
+    cout << endl << endl;
+    cout << "Kunde:" << endl;
+    cout << "ID: " << kunde->getId() << endl;
+    cout << "Vorname: " << kunde->getVorname() << endl;
+    cout << "Nachname: " << kunde->getNachname() << endl;
+    cout << "Standort: " << kunde->getAdresse()->getKoordinate()->toString() << endl;
+}
 
 
 
-    //Alle taxis von "freieTaxis" nacheinander ausgeben
-    //FERTIG
-    //(kein return)
+void Hauptmenue::freieTaxis()
+{
+    int sitze;
+    string startDatum;
+    string startUhrzeit;
+    int startKoordinateX;
+    int startKoordinateY;
+    int endKoordinateX;
+    int endKoordinateY;
+
+    cout<<"Geben sie bitte folgende Daten ein"<<endl;
+    cout<<"Anzahl der Sitze"<<endl;
+    cin>>sitze;
+    cout<<"Geben Sie Bitte jetzt ihr Datum ein (bsp. dd:mm:yyyy),";
+    cout<<" im Anschluss noch die Uhrzeit (bsp. hh:mm:ss)."<<endl;
+    cin>> startDatum;
+    cin>> startUhrzeit;
+    if (  (atoi(startDatum.substr(0, 2).c_str()) >=32      ||
+           atoi(startDatum.substr(0, 2).c_str())< 0        ||
+           atoi(startDatum.substr(3, 2).c_str())>=13       ||
+           atoi(startDatum.substr(3, 2).c_str())<=0        ||
+           atoi(startUhrzeit.substr(0, 2).c_str())>=25     ||
+           atoi(startUhrzeit.substr(0, 2).c_str())<0       ||
+           atoi(startUhrzeit.substr(3, 2).c_str())>=60     ||
+           atoi(startUhrzeit.substr(3, 2).c_str())<0       ||
+           atoi(startUhrzeit.substr(6, 2).c_str())>=60     ||
+           atoi(startUhrzeit.substr(6, 2).c_str())<0 ))
+    {
+        cout<<endl;
+        cout<<"Sie haben eine falsche Eingabe getaetigt, bitte versuchen sie es erneut!"<<endl<<endl;
+    }
+    else
+    {
+        cout<<" Nun geben Sie bitte noch die Startadresse ein (bsp. Koordinaten(x,y) "<<endl;
+        cin>>startKoordinateX;
+        cin>>startKoordinateY;
+
+        cout<<"und bitte noch die Endadresse (bsp. Koordinaten(x,y))"<<endl;
+        cin>>endKoordinateX;
+        cin>>endKoordinateY;
+
+        vector<Taxi*> freieTaxis = this->auftragssystem->gibPassendeTaxis(sitze, new DateTime(startDatum, startUhrzeit),
+                                                                          new Koordinate(startKoordinateX, startKoordinateY),
+                                                                          new Koordinate(endKoordinateX, endKoordinateY));
+
+
+        cout << endl << endl;
+        if (freieTaxis.size() == 0) {
+            cout << "Momentan stehen leider keine Taxis zur Verfuegung" << endl;
+        } else {
+            cout << "Folgende Taxis wurden ermittelt" << endl;
+
+            Taxi* currentTaxi;
+            for (unsigned int i = 0; i < freieTaxis.size(); i++) {
+                currentTaxi = freieTaxis.at(i);
+                cout << i + 1 << ". Taxi:" << endl;
+                cout << "ID: " << currentTaxi->getId() << endl;
+                cout << "Standort: " << currentTaxi->getStandort()->toString() << endl;
+                cout << "Sitze: " << currentTaxi->getSitze() << endl;
+                cout << "Extras: " << currentTaxi->getExtras() << endl;
+                cout << endl << "Das Taxi hat momentan folgende aktive Auftraege:" << endl;
+                cout << currentTaxi->alleAuftraegeToString() << endl << endl;
+            }
+        }
+    }
 }
 
 
@@ -244,8 +278,8 @@ int Hauptmenue::starten()
         //Auswahl ausfuehren
         switch(eingabe)
         {
-        case 1: kundePruefen();break;
-        case 2: freieTaxis();break;
+        case 1: cout << this->auftragssystem->alleAuftraegeToString(); break;
+        case 2: freieTaxis(); break;
         case 3: taxiAuftragErstellen();break;
         case 9: break;
 

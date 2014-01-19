@@ -28,11 +28,11 @@ public:
 	//
     string alleAuftraegeToString();
 	//
-    vector<Taxi *> gibPassendeTaxis(int sitze, DateTime* startZeit, Adresse* abholpunkt, Adresse *ziel);
+    vector<Taxi *> gibPassendeTaxis(int sitze, DateTime* startZeit, Koordinate *abholpunkt, Koordinate *ziel);
 	//
     Kunde* kundeVorhanden(string vorname, string nachname, string strasse, int plz, string hausnummer);
 	//
-    void neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, string anforderungen, Adresse* fahrziel, Adresse* abholpunkt, DateTime* abholzeit);
+    void neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, Adresse* fahrziel, Adresse* abholpunkt, DateTime* abholzeit);
 	//
     Kunde *neuerKunde(Adresse* adresse, string vorname, string nachname, int telefonnummer, int handy, string email);
     //

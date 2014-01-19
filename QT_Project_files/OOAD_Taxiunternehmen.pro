@@ -4,9 +4,6 @@ CONFIG -= qt
 
 INCLUDEPATH += ../include
 
-QMAKE_CFLAGS_WARN_ON -= -Wall
-QMAKE_CXXFLAGS_WARN_ON -= -Wall
-
 
 SOURCES += \
     ../src/TaxiKomSys.cpp \

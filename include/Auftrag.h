@@ -21,7 +21,7 @@ class Auftrag
 public:
     //
     Auftrag(Adresse* abholpunkt, DateTime* abholzeit, string anforderungen, int anzahlPersonen, DateTime* berechneteEndzeit,
-            double berechneterFahrpreis, double fahrpreis, Adresse* fahrziel, Kunde* kunde, Taxi* taxi, DateTime* endzeit, int id);
+            double berechneterFahrpreis, double fahrpreis, Adresse* fahrziel, Kunde* kunde, Taxi* taxi, DateTime* endzeit, int id, int entfernung);
 	//
 	Adresse* getAbholpunkt();
 	//
@@ -33,7 +33,7 @@ public:
 	//
     DateTime* getBerechneteEndzeit();
 	//
-    int getBerechneterFahrpreis();
+    double getBerechneterFahrpreis();
 	//
     int getFahrpreis();
 	//
@@ -46,16 +46,18 @@ public:
 	Taxi* getTaxi();
     //
     int getId();
+    //
+    int getEntfernung();
 	//
 	void setAbholpunkt(Adresse* abholpunkt);
 	//
 	void setAbholzeit(DateTime* abholzeit);
 	//
-    void setAnforderungen(string andorderungen);
+    void setAnforderungen(string anforderungen);
 	//
     void setBerechneteEndzeit(DateTime* endzeit);
 	//
-    void setBerechneterFahrpreis(int berechneterFahrpreis);
+    void setBerechneterFahrpreis(double berechneterFahrpreis);
 	//
     void setFahrpreis(int fahrpreis);
 	//
@@ -70,6 +72,8 @@ public:
     void setAnzahlPersonen(int anzahlPersonen);
     //
     void setId(int id);
+    //
+    void setEntfernung(int entfernung);
 	
 private:
 	//
@@ -107,6 +111,9 @@ private:
 
     //
     int id;
+
+    //
+    int entfernung;
 };
 
 #endif

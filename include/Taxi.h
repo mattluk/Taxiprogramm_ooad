@@ -40,6 +40,8 @@ public:
     vector<Auftrag*>getAuftraege();
     //
     bool isEqual(Taxi* taxi);
+    //
+    string alleAuftraegeToString();
 	
 private:
 	//

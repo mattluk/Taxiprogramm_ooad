@@ -17,19 +17,18 @@ Taxidatenbank* Auftragssystem::getTaxidatenbank() {
 }
 
 //
-void Auftragssystem::neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, string anforderungen,
-                                  Adresse *fahrziel, Adresse *abholpunkt, DateTime *abholzeit)
+void Auftragssystem::neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, Adresse *fahrziel, Adresse *abholpunkt, DateTime *abholzeit)
 {
     Kunde* kunde = this->kundendatenbank->getKunde(kundenId);
     Taxi* taxi = this->taxidatenbank->getTaxi(taxiId);
     DateTime* berechneteEndzeit;
 
-    int wegLaenge = this->karte->getEntfernung(abholpunkt, fahrziel);
-    int meter = wegLaenge * 1000;
-    int berechneterFahrpreis = (meter / 500) + 2.50;
+    double wegLaenge = this->karte->getEntfernung(abholpunkt, fahrziel);
+    double meter = wegLaenge * 500;
+    double berechneterFahrpreis = (meter / 500) + 2.50;
     berechneteEndzeit = abholzeit->addMinuten( (meter / 1000) );
 
-    Auftrag* auftrag = new Auftrag(abholpunkt, abholzeit, anforderungen, anzahlPersonen, berechneteEndzeit, berechneterFahrpreis, 0, fahrziel, kunde, taxi, NULL, this->auftragIdIndex++);
+    Auftrag* auftrag = new Auftrag(abholpunkt, abholzeit, taxi->getExtras(), anzahlPersonen, berechneteEndzeit, berechneterFahrpreis, 0, fahrziel, kunde, taxi, NULL, this->auftragIdIndex++, meter);
 
     taxi->addAuftrag(auftrag);
     this->auftraege.push_back(auftrag);
@@ -42,6 +41,10 @@ Kundendatenbank* Auftragssystem::getKundendatenbank() {
 //
 string Auftragssystem::alleAuftraegeToString()
 {
+    if (this->auftraege.size() == 0) {
+        return "Es sind momentan keine Auftraege vorhanden\n";
+    }
+
     stringstream ss;
     string returnString;
     Auftrag* currentAuftrag;
@@ -57,6 +60,7 @@ string Auftragssystem::alleAuftraegeToString()
     string taxiId;
     string anzahlPersonen;
     string berechneterFahrpreis;
+    string entfernung;
 
     returnString = "AUFTRAEGE\n";
     returnString += "-------------------------------------\n\n";
@@ -97,6 +101,10 @@ string Auftragssystem::alleAuftraegeToString()
         ss << currentAuftrag->getBerechneterFahrpreis();
         ss >> berechneterFahrpreis;
 
+        ss.clear();
+        ss << currentAuftrag->getEntfernung();
+        ss >> entfernung;
+
 
         returnString += "ID: " + id + "\n";
         returnString += "ID Kunde: " + kundenId + "\n";
@@ -106,17 +114,18 @@ string Auftragssystem::alleAuftraegeToString()
         returnString += "Berechneter Ankunftszeitpunkt: " + berechneteEndzeit + "\n";
         returnString += "Abholpunkt: " + abholpunkt + "\n";
         returnString += "Ziel: " + ziel + "\n";
+        returnString += "Entfernung: " + entfernung + "m\n";
         returnString += "Anforderungen: " + anforderungen + "\n";
         returnString += "ID Taxi: " + taxiId + "\n";
         returnString += "Personenanzahl: " + anzahlPersonen + "\n";
-        returnString += "Berechneter Fahrpreis: " + berechneterFahrpreis + "\n";
+        returnString += "Berechneter Fahrpreis: " + berechneterFahrpreis + " Euro\n";
         returnString += "\n\n\n";
     }
     return returnString;
 }
 
 //
-vector<Taxi*> Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, Adresse* abholpunkt, Adresse* ziel)
+vector<Taxi*> Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, Koordinate* abholpunkt, Koordinate* ziel)
 {
     int wegLaenge = this->karte->getEntfernung(abholpunkt, ziel);
     int meter = wegLaenge * 1000;
@@ -147,12 +156,12 @@ vector<Taxi*> Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, A
 
     while (!(passendeSitze.empty()) && counter != 3) {
         currentMinTaxi = passendeSitze.at(0);
-        min = this->karte->getEntfernung(abholpunkt->getKoordinate(), currentMinTaxi->getStandort());
+        min = this->karte->getEntfernung(abholpunkt, currentMinTaxi->getStandort());
         currentI = 0;
         for (unsigned int i = 0; i < passendeSitze.size(); i++) {
             currentTaxi = passendeSitze.at(i);
             if (currentTaxi->getSitze() >= sitze) {
-                int vergleich = this->karte->getEntfernung(abholpunkt->getKoordinate(), currentTaxi->getStandort());
+                int vergleich = this->karte->getEntfernung(abholpunkt, currentTaxi->getStandort());
                 if (min > vergleich) {
                     min = vergleich;
                     currentMinTaxi = currentTaxi;

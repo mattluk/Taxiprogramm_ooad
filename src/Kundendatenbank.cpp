@@ -48,9 +48,4 @@ Kunde* Kundendatenbank::getKunde(int kundenId)
     return NULL;
 }
 
-bool Kundendatenbank::istVorhanden(Kunde* kunde)
-{
-    return false;
-}
-
 int Kundendatenbank::idIndex =0;

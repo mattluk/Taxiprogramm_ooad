@@ -4,7 +4,7 @@
 #include "Auftrag.h"
 //
 Auftrag::Auftrag(Adresse* abholpunkt, DateTime* abholzeit, string anforderungen, int anzahlPersonen, DateTime* berechneteEndzeit,
-                     double berechneterFahrpreis, double fahrpreis, Adresse* fahrziel, Kunde* kunde, Taxi* taxi, DateTime* endzeit, int id)
+                     double berechneterFahrpreis, double fahrpreis, Adresse* fahrziel, Kunde* kunde, Taxi* taxi, DateTime* endzeit, int id, int entfernung)
 {
     this->abholpunkt = abholpunkt;
     this->abholzeit = abholzeit;
@@ -18,6 +18,16 @@ Auftrag::Auftrag(Adresse* abholpunkt, DateTime* abholzeit, string anforderungen,
     this->taxi = taxi;
     this->endzeit = endzeit;
     this->id = id;
+    this->entfernung = entfernung;
+}
+
+//
+int Auftrag::getEntfernung() {
+    return this->entfernung;
+}
+
+void Auftrag::setEntfernung(int entfernung) {
+    this->entfernung = entfernung;
 }
 
 //
@@ -57,7 +67,7 @@ Taxi* Auftrag::getTaxi()
 }
 
 //
-int Auftrag::getBerechneterFahrpreis()
+double Auftrag::getBerechneterFahrpreis()
 {
     return this->berechneterFahrpreis;
 }
@@ -75,7 +85,7 @@ void Auftrag::setAnzahlPersonen(int anzahlPersonen)
 }
 
 //
-void Auftrag::setAnforderungen(string andorderungen)
+void Auftrag::setAnforderungen(string anforderungen)
 {
     this->anforderungen = anforderungen;
 }
@@ -105,7 +115,7 @@ void Auftrag::setTaxi(Taxi* taxi)
 }
 
 //
-void Auftrag::setBerechneterFahrpreis(int berechneterFahrpreis)
+void Auftrag::setBerechneterFahrpreis(double berechneterFahrpreis)
 {
     this->berechneterFahrpreis = berechneterFahrpreis;
 }

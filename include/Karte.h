@@ -22,7 +22,7 @@ public:
     int getEntfernung(Koordinate* start, Koordinate* ziel);
 
 private:
-    int kleinsterWeg(int startknoten, int zielknoten, int max);
+    int kleinsterWeg(int startknoten, int zielknoten);
 
     int kleinsterWert(vector<int> &Q, int abstand[5]);
 
