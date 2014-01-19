@@ -8,7 +8,7 @@ Kundendatenbank::Kundendatenbank()
     this->kunden = vector<Kunde*>();
 }
 
-//
+//Es wird geprueft ob bereits ein Kunde vorhandne ist, falls ja wird dieser zurueckgegeben
 Kunde* Kundendatenbank::getKunde(string vorname, string nachname, string strasse, int plz, string hausnummer)
 {
     Kunde* currentKunde;

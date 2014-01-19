@@ -16,7 +16,8 @@ Taxidatenbank* Auftragssystem::getTaxidatenbank() {
     return this->taxidatenbank;
 }
 
-//
+// In der Methode wird ein neuer Auftrag erstellt, Es werden verschiedene Informationen übergeben.
+// weiterhin wird der Fahrpreis und die Wegstrecke ermittelt.
 void Auftragssystem::neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, Adresse *fahrziel, Adresse *abholpunkt, DateTime *abholzeit)
 {
     Kunde* kunde = this->kundendatenbank->getKunde(kundenId);
@@ -38,7 +39,7 @@ Kundendatenbank* Auftragssystem::getKundendatenbank() {
     return this->kundendatenbank;
 }
 
-//
+//Die Methode liefert alle eingegbenen Informationen als String aus
 string Auftragssystem::alleAuftraegeToString()
 {
     if (this->auftraege.size() == 0) {
@@ -124,7 +125,7 @@ string Auftragssystem::alleAuftraegeToString()
     return returnString;
 }
 
-//
+//Die Funktion liefert passende Taxis zurueck.
 vector<Taxi*> Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, Koordinate* abholpunkt, Koordinate* ziel)
 {
     int wegLaenge = this->karte->getEntfernung(abholpunkt, ziel);
@@ -177,7 +178,7 @@ vector<Taxi*> Auftragssystem::gibPassendeTaxis(int sitze, DateTime* startZeit, K
     return returnTaxis;
 }
 
-//
+// Rueckgabe von Kunde (um zu ueberpruefen ob er bereits vorhanden ist)
 Kunde* Auftragssystem::kundeVorhanden(string vorname, string nachname, string strasse, int plz, string hausnummer)
 {
     return this->kundendatenbank->getKunde(vorname, nachname, strasse, plz, hausnummer);

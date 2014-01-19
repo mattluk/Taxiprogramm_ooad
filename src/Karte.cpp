@@ -1,5 +1,5 @@
 #include "Karte.h"
-
+//Es wird eine Karte mit Koordinaten erstellt und in einen Vector geschrieben (Adjazenzmatrix wird erstellt)
 Karte::Karte() {
     int max = 13;
 

@@ -2,7 +2,7 @@
 
 
 #include "Kunde.h"
-//
+//Konstruktor wird aufgerufen
 Kunde::Kunde(Adresse *adresse, string email, int handy, string nachname, int telefonnummer, string vorname,int id)
 {
     this->adresse = adresse;

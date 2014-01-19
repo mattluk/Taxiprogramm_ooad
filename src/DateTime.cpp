@@ -13,7 +13,7 @@ DateTime::DateTime(int jahr, int monat, int tag, int stunde, int minuten, int se
     this->sekunden = sekunden;
 }
 
-//
+// DateTime splittet date und time in Substrings
 DateTime::DateTime(string date, string time) {
     this->tag = atoi(date.substr(0, 2).c_str());
     this->monat = atoi(date.substr(3, 2).c_str());
@@ -23,7 +23,7 @@ DateTime::DateTime(string date, string time) {
     this->sekunden = atoi(time.substr(6, 2).c_str());
 }
 
-//
+//das Datum wird in einen String umgewandelt
 string DateTime::dateToString() {
     stringstream tagS;
     stringstream monatS;
@@ -41,7 +41,7 @@ string DateTime::dateToString() {
     jahrS << this->jahr;
     return (tagS.str() + "." + monatS.str() + "." + jahrS.str());
 }
-
+//die Zeit wird in einen String umgewandelt
 string DateTime::timeToString() {
     stringstream stundeS;
     stringstream minutenS;

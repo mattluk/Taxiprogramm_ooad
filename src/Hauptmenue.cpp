@@ -3,7 +3,7 @@
 
 #include "Hauptmenue.h"
 //
-
+// Im Konstruktor werden verschiedene Taxen angelegt mit Informationen ueber extras, sitzplaetze und Aufenthaltsort
 Hauptmenue::Hauptmenue()
 {
     this->auftragssystem = new Auftragssystem();
@@ -14,7 +14,7 @@ Hauptmenue::Hauptmenue()
     this->auftragssystem->getTaxidatenbank()->addTaxi("grosser Kofferraum", 5, new Koordinate(80, 52));
     this->auftragssystem->getTaxidatenbank()->addTaxi("Fahrrad", 4, new Koordinate(40, 80));
 }
-
+//Es wird ein neuer Taxi Auftrag erstellt
 void Hauptmenue::taxiAuftragErstellen()
 {
     this->kundePruefen();
@@ -105,7 +105,7 @@ void Hauptmenue::taxiAuftragErstellen()
     }
 
 }
-
+//Es wird geprueft ob der Kunde bereits vorhanden ist, falls nein werden weitere Daten hinzugefügt
 void Hauptmenue::kundePruefen()
 {
     string email;
@@ -181,7 +181,7 @@ void Hauptmenue::kundePruefen()
 }
 
 
-
+//Die Methode bestimmt alle freien Taxis und gib Sie aus
 void Hauptmenue::freieTaxis()
 {
     int sitze;
@@ -249,7 +249,7 @@ void Hauptmenue::freieTaxis()
     }
 }
 
-
+//Das Hauptmenue wird aufgerufen
 int Hauptmenue::starten()
 {
     int eingabe=-1;
