@@ -27,6 +27,8 @@ public:
 	
 private:
 	//
+    Kundendatenbank* kundendatenbank;
+    //
     Auftragssystem* auftragssystem;
 };
 
