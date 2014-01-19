@@ -15,6 +15,8 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -39,6 +41,8 @@ public:
     Taxidatenbank* getTaxidatenbank();
     //
     Kundendatenbank* getKundendatenbank();
+
+    double getGrundgebuehr();
 	
 private:
 	//
@@ -58,6 +62,8 @@ private:
 
     //
     static int auftragIdIndex;
+
+    double grundgebuehr1;
 };
 
 #endif

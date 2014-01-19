@@ -147,6 +147,13 @@ void Hauptmenue::kundePruefen()
     cin>>hausnummer;
     cin>>plz;
     cin>>stadt;
+    for(unsigned int i=0; i<stadt.length(); i++)
+    {
+        if(stadt[i] >= '0' && stadt[i] <= '9')
+        {
+            cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer die Stadt eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
+        }
+    }
 
     //Eventuell hier noch strasse hausnummer plz und stadt pruefen
 

@@ -26,7 +26,7 @@ void Auftragssystem::neuerAuftrag(int kundenId, int taxiId, int anzahlPersonen, 
 
     double wegLaenge = this->karte->getEntfernung(abholpunkt, fahrziel);
     double meter = wegLaenge * 500;
-    double berechneterFahrpreis = (meter / 500) + 2.50;
+    double berechneterFahrpreis = (meter / 500) + this->getGrundgebuehr();
     berechneteEndzeit = abholzeit->addMinuten( (meter / 1000) );
 
     Auftrag* auftrag = new Auftrag(abholpunkt, abholzeit, taxi->getExtras(), anzahlPersonen, berechneteEndzeit, berechneterFahrpreis, 0, fahrziel, kunde, taxi, NULL, this->auftragIdIndex++, meter);
@@ -191,3 +191,28 @@ Kunde* Auftragssystem::neuerKunde(Adresse* adresse, string vorname, string nachn
 }
 
 int Auftragssystem::auftragIdIndex = 0;
+
+double Auftragssystem::getGrundgebuehr()
+{
+    istringstream stm;
+    string reader;
+    ifstream input("preistabelle.txt");
+    if(input.is_open())
+    {
+        while(!input.eof())
+        {
+            input>>reader;
+            if(reader == "G1")
+            {
+                input>>reader; // Preis einlesen
+                stm.str(reader); // Konvertierung nach double
+                stm >> grundgebuehr1;
+                return grundgebuehr1;
+            }
+        }
+    }
+    else
+        cout<<"file could not be opened";
+    input.close();
+    return 0;
+}
