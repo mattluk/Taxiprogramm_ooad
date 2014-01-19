@@ -42,7 +42,7 @@ public:
     //
     Kundendatenbank* getKundendatenbank();
 
-    double getGrundgebuehr();
+    double getGrundgebuehr(string Gx);
 	
 private:
 	//
@@ -62,8 +62,6 @@ private:
 
     //
     static int auftragIdIndex;
-
-    double grundgebuehr1;
 };
 
 #endif
