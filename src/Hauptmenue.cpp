@@ -75,12 +75,6 @@ void Hauptmenue::taxiAuftragErstellen()
 
 void Hauptmenue::kundePruefen()
 {
-    // Auftragssystem kundenvorhanden.
-   // ->wenn null neuerKunde aufrufen
-}
-
-void Hauptmenue::neuerKunde()
-{
     string email;
     int handy;
     string nachname;
@@ -91,6 +85,7 @@ void Hauptmenue::neuerKunde()
     string hausnummer;
     int plz;
     string stadt;
+    Kunde * kunden;
 
     cout<<"Geben Sie bitte ihre folgende Daten zu Ihrer Person an!"<<endl<<endl;
     cout<<"Nachnamen"<<endl;
@@ -117,12 +112,27 @@ void Hauptmenue::neuerKunde()
     cin>>plz;
     cin>>stadt;
     adresse= new Adresse (strasse,hausnummer,plz,stadt);
+    //Id ausgeben
+    //Kunde Prüfen erst dann email etc..
+    kunden = this->kundendatenbank->getKunde(vorname,nachname,strasse,plz,hausnummer);
+    if (kunden==kunden)
+    {
+        cout<<"Der Kunde existiert bereits"<<endl;
+    }
+    else
+    {
+    cout<<"Bitte legen Sie weitere Daten an!"<<endl;
     cout<<"Email-Adresse"<<endl;
     cin>> email;
     cout<<"Telefonnummer"<<endl;
     cin>>telefonnummer;
     cout<<"Handynummer"<<endl;
     cin>>handy;
+    int id =0;
+    kunden= new Kunde(adresse,email,handy,nachname,telefonnummer,vorname,id);
+    id++;
+    cout<<id<<endl;
+    }
 }
 
 void Hauptmenue::freieTaxis()
@@ -143,17 +153,70 @@ void Hauptmenue::freieTaxis()
     int endKoordinateX;
     int endKoordinateY;
 
-
-
     //Alle Daten hier einlesen
+    cout<<"Geben sie bitte folgende Daten ein"<<endl;
+    cout<<"Anzahl der Sitze"<<endl;
+    cin>>sitze;
+    cout<<"Geben Sie Bitte jetzt ihr Datum ein (bsp. dd:mm:yyyy),";
+    cout<<" im Anschluss noch die Uhrzeit (bsp. hh:mm:ss)."<<endl;
+    cin>> startDatum;
+    cin>> startUhrzeit;
+    if (  (atoi(startDatum.substr(0, 2).c_str()) >=32      ||
+           atoi(startDatum.substr(0, 2).c_str())< 0        ||
+           atoi(startDatum.substr(3, 2).c_str())>=13       ||
+           atoi(startDatum.substr(3, 2).c_str())<=0        ||
+           atoi(startUhrzeit.substr(0, 2).c_str())>=25     ||
+           atoi(startUhrzeit.substr(0, 2).c_str())<0       ||
+           atoi(startUhrzeit.substr(3, 2).c_str())>=60     ||
+           atoi(startUhrzeit.substr(3, 2).c_str())<0       ||
+           atoi(startUhrzeit.substr(6, 2).c_str())>=60     ||
+           atoi(startUhrzeit.substr(6, 2).c_str())<0 ))
+    {
+        cout<<endl;
+        cout<<"Sie haben eine falsche Eingabe getaetigt, bitte versuchen sie es erneut!"<<endl<<endl;
+    }
+    else
+    {
+        cout<<" Nun geben Sie bitte noch die Startadresse ein (bsp. Strasse,Hausnummer,PLZ,Stadt,Koordinaten(x,y) "<<endl;
+        cin>> startStrasse;
+        cin>> startHausnummer;
+        cin>> startPlz;
+        cin>> startStadt;
+        for(unsigned int i=0; i<startStadt.length(); i++)
+        {
+            if(startStadt[i] >= '0' && startStadt[i] <= '9')
+            {
+                cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer die Stadt eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
+            }
+        }
+        cin>>startKoordinateX;
+        cin>>startKoordinateY;
 
+        cout<<"und bitte noch die Endadresse (bsp. Strasse,Hausnummer,PLZ,Stadt,Koordinaten(x,y))"<<endl;
+        cin>> endStrasse;
+        cin>> endHausnummer;
+        cin>> endPlz;
+        cin>> endStadt;
+        for(unsigned int i=0; i<endStadt.length(); i++)
+        {
+            if(endStadt[i] >= '0' && endStadt[i] <= '9')
+            {
+                cout<<"Ihre Eingabe war falsch, Sie haben Zahlen fuer die Stadt eingesetzt.Versuchen Sie es erneut!"<<endl<<endl;
+            }
+        }
+        cin>>endKoordinateX;
+        cin>>endKoordinateY;
+    }
 
 
     //freieTaxis werden ermittelt
     vector<Taxi*> freieTaxis = this->auftragssystem->gibPassendeTaxis(sitze, new DateTime(startDatum, startUhrzeit),
-                                                                      new Adresse(startStrasse, startHausnummer, startPlz, startStadt, new Koordinate(startKoordinateX, startKoordinateY)),
-                                                                      new Adresse(endStrasse, endHausnummer, endPlz, endStadt, new Koordinate(endKoordinateX, endKoordinateY)));
+                                                                             new Adresse(startStrasse, startHausnummer, startPlz, startStadt, new Koordinate(startKoordinateX, startKoordinateY)),
+                                                                             new Adresse(endStrasse, endHausnummer, endPlz, endStadt, new Koordinate(endKoordinateX, endKoordinateY)));
 
+//    Taxi* taxi;
+//    cout<<taxi->getId();
+//    cout<<endl;
 
 
 
@@ -161,6 +224,7 @@ void Hauptmenue::freieTaxis()
     //FERTIG
     //(kein return)
 }
+
 
 int Hauptmenue::starten()
 {
@@ -190,7 +254,7 @@ int Hauptmenue::starten()
         //Auswahl ausfuehren
         switch(eingabe)
         {
-        case 1: ;break;
+        case 1: kundePruefen();break;
         case 2: freieTaxis();break;
         case 3: taxiAuftragErstellen();break;
         case 9: break;
@@ -201,3 +265,4 @@ int Hauptmenue::starten()
 
     return 0;
 }
+
